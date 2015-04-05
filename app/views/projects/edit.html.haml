@@ -1,3 +1,6 @@
-%h1= @project.title
+%h1
+  %span
+    = link_to fa_icon('list'), root_path, class: 'btn btn-primary'
+  = @project.title
 
 = render 'form'
