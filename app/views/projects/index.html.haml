@@ -1,0 +1,23 @@
+%h1 Projects
+
+%table.table.table.bordered
+  %thead
+    %tr
+      %th Title
+      %th Volume
+      %th Price
+      %th Date
+      %th
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.title
+        %td= project.volume
+        %td= project.price
+        %td= project.created_at
+        %td
+          = link_to 'View', '#'
+          |
+          = link_to 'Edit', '#'
+          |
+          = link_to 'Delete', '#'
