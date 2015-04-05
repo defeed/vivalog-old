@@ -1,0 +1,5 @@
+= simple_form_for(@project, html: { class: 'form-vertical' }) do |form|
+  = form.input :title
+  = form.input :volume
+  = form.input :price
+  = form.submit 'Save', class: 'btn btn-primary'

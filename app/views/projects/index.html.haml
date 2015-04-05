@@ -1,4 +1,7 @@
-%h1 Projects
+%h1
+  Projects
+  %span
+    = link_to fa_icon('plus'), new_project_path, class: 'btn btn-success'
 
 %table.table.table.bordered
   %thead
@@ -16,8 +19,8 @@
         %td= project.price
         %td= project.created_at
         %td
-          = link_to 'View', '#'
+          = link_to 'View', project_path(project)
           |
-          = link_to 'Edit', '#'
+          = link_to 'Edit', edit_project_path(project)
           |
-          = link_to 'Delete', '#'
+          = link_to 'Delete', project_path(project), method: :delete, data: { confirm: 'Are you sure?' }

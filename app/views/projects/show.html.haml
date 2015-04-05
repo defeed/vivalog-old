@@ -1,0 +1,23 @@
+%h1
+  %span
+    = link_to fa_icon('list'), root_path, class: 'btn btn-primary'
+  = @project.title
+
+%table.table.table.bordered
+  %thead
+    %tr
+      %th Title
+      %th Volume
+      %th Price
+      %th Date
+      %th
+  %tbody
+    %tr
+      %td= @project.title
+      %td= @project.volume
+      %td= @project.price
+      %td= @project.created_at
+      %td
+        = link_to 'Edit', edit_project_path(@project)
+        |
+        = link_to 'Delete', project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }
