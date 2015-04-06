@@ -16,8 +16,27 @@
       %td= @project.title
       %td= @project.volume
       %td= @project.price
-      %td= @project.created_at
+      %td= @project.created_at.to_date
       %td
         = link_to 'Edit', edit_project_path(@project)
         |
         = link_to 'Delete', project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }
+
+%table.table.table.bordered
+  %thead
+    %tr
+      %th Name
+      %th Date
+      %th Type
+      %th Workers
+      %th Coeff
+      %th
+  %tbody
+    - @entries.each do |entry|
+      %tr
+        %td Herp Derp
+        %td= entry.worked_on
+        %td= entry.work_type
+        %td= entry.workers
+        %td= entry.coefficient
+        %td= link_to 'Delete', entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }

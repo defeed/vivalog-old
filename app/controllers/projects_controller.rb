@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @entries = @project.entries
   end
 
   def new
