@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
 
   def destroy
     if @entry.destroy
-      redirect_to project_entries_path(@entry.project)
+      redirect_to project_path(@entry.project)
     end
   end
 
