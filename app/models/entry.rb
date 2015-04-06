@@ -1,12 +1,13 @@
 class Entry < ActiveRecord::Base
   belongs_to :project
 
-  validates_presence_of :user_id, :worked_on, :work_type, :coefficient
+  validates_presence_of :project_id, :worked_on, :work_type, :coefficient
 
-  def work_types
+  def self.work_types
     {
       'Receiving' => 'receive',
-      'Polishing' => 'polish'
+      'Polishing' => 'polish',
+      'Other' => 'other'
     }
   end
 end
