@@ -1,0 +1,11 @@
+= simple_form_for(@entry, html: { class: 'form-vertical' }) do |form|
+  .row
+    .col-sm-3
+      = form.input :worked_on, as: 'string', label: 'Date'
+      = form.association :project, collection: Project.all, prompt: 'Choose Project'
+      = form.input :work_type, collection: Entry.work_types, prompt: 'Choose Type'
+  .row
+    .col-sm-2
+      = form.input :workers
+      = form.input :coefficient
+  = form.submit 'Save', class: 'btn btn-lg btn-primary'
