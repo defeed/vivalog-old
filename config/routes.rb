@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :projects do
-    resources :entries, shallow: true
-  end
+  resources :projects
+  resources :entries, only: [:new, :create, :destroy]
 
   root 'projects#index'
 end
