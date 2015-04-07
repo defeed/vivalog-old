@@ -1,7 +1,7 @@
 = simple_form_for(@entry, html: { class: 'form-vertical' }) do |form|
   .row
     .col-sm-3
-      = form.input :worked_on, as: 'string', label: 'Date'
+      = form.input :worked_on, as: 'string', label: 'Date', input_html: { class: 'datepicker' }
       = form.association :project, collection: Project.all, prompt: 'Choose Project'
       = form.input :work_type, collection: Entry.work_types, prompt: 'Choose Type'
   .row
