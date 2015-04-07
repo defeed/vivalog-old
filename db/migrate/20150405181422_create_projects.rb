@@ -4,6 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :title
       t.float :volume
       t.decimal :price
+      t.date :date
 
       t.timestamps null: false
     end

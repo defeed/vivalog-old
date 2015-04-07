@@ -17,7 +17,7 @@
       %td= @project.volume
       %td= @project.price
       %td
-        %time.moment{ datetime: @project.created_at.to_date }
+        %time.moment{ datetime: @project.date }
       %td
         = link_to fa_icon('edit'), edit_project_path(@project), class: 'btn btn-xs btn-default'
         = link_to fa_icon('trash-o'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
