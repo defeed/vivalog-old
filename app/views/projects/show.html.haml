@@ -16,7 +16,8 @@
       %td= @project.title
       %td= @project.volume
       %td= @project.price
-      %td= @project.created_at.to_date
+      %td
+        %time.moment{ datetime: @project.created_at.to_date }
       %td
         = link_to fa_icon('edit'), edit_project_path(@project), class: 'btn btn-xs btn-default'
         = link_to fa_icon('trash-o'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
@@ -34,7 +35,8 @@
     - @entries.each do |entry|
       %tr
         %td Herp Derp
-        %td= entry.worked_on
+        %td
+          %time.moment{ datetime: entry.worked_on }
         %td= entry.work_type
         %td= entry.workers
         %td= entry.coefficient

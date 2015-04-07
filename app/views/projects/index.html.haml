@@ -17,7 +17,8 @@
         %td= project.title
         %td= project.volume
         %td= number_to_currency(project.price, unit: '€')
-        %td= project.created_at.to_date
+        %td
+          %time.moment{ datetime: project.created_at.to_date }
         %td
           = link_to fa_icon('eye'), project_path(project), class: 'btn btn-xs btn-default'
           = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-xs btn-default'
