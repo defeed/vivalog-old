@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_entry, only: [:destroy]
 
   def new
