@@ -6,16 +6,21 @@
 %table.table.table.bordered
   %thead
     %tr
-      %th Title
       %th Volume
-      %th Price
+      %th Receive
+      %th Polish
+      %th Other
       %th Date
       %th
   %tbody
     %tr
-      %td= @project.title
       %td= @project.volume
-      %td= @project.price
+      %td
+        = number_to_currency(@project.price_receive, unit: '€')
+      %td
+        = number_to_currency(@project.price_receive, unit: '€')
+      %td
+        = number_to_currency(@project.price_receive, unit: '€')
       %td
         %time.moment{ datetime: @project.date }
       %td

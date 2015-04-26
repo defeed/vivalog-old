@@ -8,7 +8,9 @@
     %tr
       %th Title
       %th Volume
-      %th Price
+      %th Receive
+      %th Polish
+      %th Other
       %th Date
       %th
   %tbody
@@ -16,7 +18,12 @@
       %tr
         %td= project.title
         %td= project.volume
-        %td= number_to_currency(project.price, unit: '€')
+        %td
+          = number_to_currency(project.price_receive, unit: '€')
+        %td
+          = number_to_currency(project.price_polish, unit: '€')
+        %td
+          = number_to_currency(project.price_other, unit: '€')
         %td
           %time.moment{ datetime: project.date }
         %td

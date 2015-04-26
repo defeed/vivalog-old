@@ -6,5 +6,7 @@
     .col-sm-2
       = form.input :date, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: form.object.date.try(:strftime, '%d.%m.%Y') }
       = form.input :volume
-      = form.input :price
+      = form.input :price_receive, label: 'Price (receive)'
+      = form.input :price_polish, label: 'Price (polish)'
+      = form.input :price_other, label: 'Price (other)'
   = form.submit 'Save', class: 'btn btn-lg btn-primary'

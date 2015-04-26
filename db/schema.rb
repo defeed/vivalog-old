@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 20150405181852) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.float    "volume"
-    t.decimal  "price"
+    t.decimal  "price_receive"
+    t.decimal  "price_polish"
+    t.decimal  "price_other"
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
