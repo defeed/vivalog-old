@@ -3,7 +3,7 @@
   %span
     = link_to fa_icon('plus'), new_project_path, class: 'btn btn-success'
 
-%table.table.table.bordered
+%table.table.table-bordered.table-striped.table-responsive
   %thead
     %tr
       %th Title
@@ -12,11 +12,11 @@
       %th Polish
       %th Other
       %th Date
-      %th
+      %th{ style: 'width: 110px' }
   %tbody
     - @projects.each do |project|
       %tr
-        %td= project.title
+        %td= link_to project.title, project_path(project)
         %td= project.volume
         %td
           = number_to_currency(project.price_receive, unit: '€')
@@ -27,6 +27,6 @@
         %td
           %time.moment{ datetime: project.date }
         %td
-          = link_to fa_icon('eye'), project_path(project), class: 'btn btn-xs btn-default'
-          = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-xs btn-default'
-          = link_to fa_icon('trash-o'), project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+          .btn-group
+            = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-md btn-default'
+            = link_to fa_icon('trash-o'), project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-md btn-danger'
