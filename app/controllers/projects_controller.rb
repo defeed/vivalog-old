@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.search(params[:query])
   end
 
   def show

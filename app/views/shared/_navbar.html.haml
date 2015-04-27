@@ -7,10 +7,10 @@
         %span.icon-bar
       = link_to 'VIVALog', root_path, class: 'navbar-brand'
     #navbar-collapse.collapse.navbar-collapse
-      %form.navbar-form.navbar-left
+      = form_tag root_path, class: 'navbar-form navbar-left', method: :get do
         .form-group
-          %input.form-control{ placeholder: 'Search', type: 'text' }
-        %button.btn.btn-default{ type: 'submit' } OK
+          = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
+        = submit_tag 'Search', class: 'btn btn-default', type: 'button'
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li= link_to current_user, edit_registration_path(current_user)
