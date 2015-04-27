@@ -6,9 +6,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
+    = render 'shared/navbar'
     .container
-      - if user_signed_in?
-        %p
-          = current_user \
-          = link_to 'Sign out', destroy_user_session_path, method: :delete
       = yield

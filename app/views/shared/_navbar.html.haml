@@ -1,0 +1,17 @@
+%nav.navbar.navbar-fixed-top.navbar-default
+  .container-fluid
+    .navbar-header
+      %button.navbar-toggle.collapsed{ type: 'button', data: { target: '#navbar-collapse', toggle: 'collapse' } }
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'VIVALog', root_path, class: 'navbar-brand'
+    #navbar-collapse.collapse.navbar-collapse
+      %form.navbar-form.navbar-left
+        .form-group
+          %input.form-control{ placeholder: 'Search', type: 'text' }
+        %button.btn.btn-default{ type: 'submit' } OK
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li= link_to current_user, edit_registration_path(current_user)
+          %li= link_to 'Sign out', destroy_user_session_path, method: :delete
