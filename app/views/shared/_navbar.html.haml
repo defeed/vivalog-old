@@ -10,7 +10,7 @@
       = form_tag root_path, class: 'navbar-form navbar-left', method: :get do
         .form-group
           = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
-        = submit_tag 'Search', class: 'btn btn-default', type: 'button'
+        = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li= link_to current_user, edit_registration_path(current_user)
