@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'haml'
@@ -19,6 +18,10 @@ gem 'dotenv-rails'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-typeahead.js'
+# end
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -29,6 +32,7 @@ group :development do
   gem 'pry-rails'
   gem 'binding_of_caller'
   gem 'spring'
+  gem 'faker'
 end
 
 group :production do
