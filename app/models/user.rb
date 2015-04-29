@@ -25,4 +25,8 @@ class User < ActiveRecord::Base
   def to_s
     name.presence || username
   end
+
+  def active_for_authentication?
+    super && is_active?
+  end
 end
