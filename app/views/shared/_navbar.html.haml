@@ -11,6 +11,8 @@
         .form-group
           = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
         = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
+      %ul.nav.navbar-nav
+        %li= link_to 'Users', users_path
       %ul.nav.navbar-nav.navbar-right
         %li.navbar-text= current_user
         %li= link_to 'Sign out', destroy_user_session_path, method: :delete

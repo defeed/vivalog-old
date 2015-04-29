@@ -1,0 +1,15 @@
+%h1 Users
+
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Registered
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user, user_path(user)
+        %td= user.email
+        %td
+          %time.moment{ datetime: user.created_at.to_date }
