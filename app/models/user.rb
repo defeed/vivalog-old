@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
   def accountant?
     role == :accountant
   end
+
+  def worker?
+    role == :worker
+  end
 end
