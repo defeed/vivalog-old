@@ -32,19 +32,9 @@ class User < ActiveRecord::Base
     super && is_active?
   end
 
-  def admin?
-    role == :administrator
-  end
-
-  def manager?
-    role == :manager
-  end
-
-  def accountant?
-    role == :accountant
-  end
-
-  def worker?
-    role == :worker
+  ROLES.each do |r|
+    define_method "#{r}?" do
+      role == r.to_s
+    end
   end
 end
