@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  ROLES = %i( administrator manager accountant worker )
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
@@ -28,5 +30,17 @@ class User < ActiveRecord::Base
 
   def active_for_authentication?
     super && is_active?
+  end
+
+  def admin?
+    role == :administrator
+  end
+
+  def manager?
+    role == :manager
+  end
+
+  def accountant?
+    role == :accountant
   end
 end
