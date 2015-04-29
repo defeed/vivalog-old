@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_entry, only: [:destroy]
+  load_and_authorize_resource
 
   def new
     @entry = Entry.new
@@ -27,9 +27,5 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(
       :project_id, :work_type, :workers, :coefficient, :worked_on
     )
-  end
-
-  def find_entry
-    @entry = Entry.find(params[:id])
   end
 end

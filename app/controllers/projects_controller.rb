@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_project, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @projects = Project.search(params[:query])
@@ -53,9 +53,5 @@ class ProjectsController < ApplicationController
         :price_polish,
         :price_other
       )
-  end
-
-  def find_project
-    @project = Project.find(params[:id])
   end
 end
