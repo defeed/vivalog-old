@@ -6,6 +6,7 @@
       %th Name
       %th Email
       %th Registered
+      %th Status
   %tbody
     - @users.each do |user|
       %tr
@@ -13,3 +14,4 @@
         %td= user.email
         %td
           %time.moment{ datetime: user.created_at.to_date }
+        %td= user.is_active? ? 'Active' : 'Inactive'
