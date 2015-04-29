@@ -13,6 +13,12 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'Password reset e-mail was sent to user'
   end
 
+  def toggle_active
+    find_user
+    @user.toggle! :is_active
+    redirect_to @user
+  end
+
   private
 
   def find_user

@@ -1,3 +1,4 @@
 %h1= "#{@user} (#{@user.email})"
 
 = link_to 'Reset password', reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+= link_to "#{@user.is_active? ? 'Deactivate' : 'Activate'}", toggle_active_user_path(@user), class: 'btn btn-default', method: :patch

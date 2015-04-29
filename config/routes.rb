@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :reset_password
+      patch :toggle_active
     end
   end
   resources :projects
