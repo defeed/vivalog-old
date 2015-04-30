@@ -7,7 +7,7 @@
         %span.icon-bar
       = link_to 'VIVALog', root_path, class: 'navbar-brand'
     #navbar-collapse.collapse.navbar-collapse
-      = form_tag root_path, class: 'navbar-form navbar-left', method: :get do
+      = form_tag projects_path, class: 'navbar-form navbar-left', method: :get do
         .form-group
           = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
         = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
