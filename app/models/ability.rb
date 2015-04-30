@@ -14,6 +14,7 @@ class Ability
     if user.worker?
       can :create, Entry
       can [:read, :update], Entry, user_id: user.id
+      can [:show_profile, :update], User, id: user.id
     end
   end
 end

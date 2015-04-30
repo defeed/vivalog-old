@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :entries, only: [:new, :create, :destroy]
   resource :dashboard, only: :index
+  get :profile, to: 'users#show_profile'
 
   root 'dashboard#index'
 end

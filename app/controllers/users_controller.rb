@@ -12,9 +12,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User details updated'
+      flash[:notice] = 'User details updated'
+      redirect_to can?(:manage, User) ? @user : profile_path
     else
-      render :show
+      render can?(:manage, User) ? :show : show_profile
     end
   end
 
@@ -26,6 +27,11 @@ class UsersController < ApplicationController
       @users = User.order(created_at: :asc)
       render :index
     end
+  end
+
+  def show_profile
+    @user = current_user
+    render :show
   end
 
   def reset_password
