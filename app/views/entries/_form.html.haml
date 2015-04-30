@@ -5,7 +5,7 @@
   .row
     .col-sm-3
       = form.association :project, collection: Project.all, prompt: 'Choose Project'
-      = form.input :work_type, collection: Entry.work_types, prompt: 'Choose Type'
+      = form.input :work_type, collection: work_types_for_select, prompt: 'Choose Type'
   .row
     .col-sm-2
       = form.input :workers
