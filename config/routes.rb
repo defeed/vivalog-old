@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :projects
   resources :entries, only: [:new, :create, :destroy]
+  resource :dashboard, only: :index
 
-  root 'projects#index'
+  root 'dashboard#index'
 end
