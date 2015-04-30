@@ -1,6 +1,6 @@
 User.create!(
+  name: ENV['ADMIN_NAME'],
   email: ENV['ADMIN_EMAIL'],
-  username: ENV['ADMIN_USERNAME'],
   password: ENV['ADMIN_PASSWORD'],
   role: :administrator
 )
