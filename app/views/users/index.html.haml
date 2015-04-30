@@ -1,16 +1,6 @@
 %h1 Users
 
-.well.well-default
-  = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
-    = form.error_notification
-    .form-group
-      = form.input :name, label: false, placeholder: 'Name'
-    .form-group
-      = form.input :email, label: false, placeholder: 'E-mail'
-    .form-group
-      = form.input :role, collection: roles_for_select, prompt: 'Choose Role', label: false
-    = form.submit 'Create user', class: 'btn btn-primary'
-
+= render 'new_user_form'
 
 %table.table.table-bordered.table-striped
   %thead
