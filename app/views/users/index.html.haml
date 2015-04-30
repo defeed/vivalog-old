@@ -18,6 +18,7 @@
       %th Name
       %th Email
       %th Registered
+      %th Role
       %th Status
   %tbody
     - @users.each do |user|
@@ -26,4 +27,5 @@
         %td= user.email
         %td
           %time.moment{ datetime: user.created_at.to_date }
-        %td= user.is_active? ? 'Active' : 'Inactive'
+        %td= role_label(user.role)
+        %td= status_label(user.is_active?)

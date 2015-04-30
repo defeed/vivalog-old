@@ -27,4 +27,27 @@ module ApplicationHelper
 
     hash
   end
+
+  def status_label(is_active)
+    string = is_active ? I18n.t('statuses.active') : I18n.t('statuses.inactive')
+    label_class = is_active ? 'success' : 'default'
+
+    content_tag(
+      :span,
+      string,
+      class: "label label-#{label_class}"
+    )
+  end
+
+  def role_label(role)
+    content_tag(
+      :span,
+      I18n.t("roles.#{role}"),
+      class: 'label label-primary'
+    )
+  end
+
+  def activate_button_text(is_active)
+    is_active ? I18n.t('statuses.deactivate') : I18n.t('statuses.activate')
+  end
 end

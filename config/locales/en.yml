@@ -5,6 +5,12 @@ en:
     accountant: Accountant
     worker: Worker
 
+  statuses:
+    active: Active
+    inactive: Inactive
+    activate: Activate
+    deactivate: Deactivate
+
   work_types:
     receive: Receiving
     polish: Polishing
