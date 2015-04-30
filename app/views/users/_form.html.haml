@@ -1,16 +1,17 @@
 - if can? :update, User
-  = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
-    = form.error_notification
-    .form-group
-      = form.input :name, label: false, placeholder: 'Name'
-    .form-group
-      = form.input :email, label: false, placeholder: 'E-mail'
-    - if can? :manage, User
+  .well.well-default
+    = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
+      = form.error_notification
       .form-group
-        = form.input :role, collection: roles_for_select, prompt: 'Choose Role', label: false
-    %hr
-    .form-actions
-      = form.submit 'Update details', class: 'btn btn-primary'
-      = link_to fa_icon('send-o', text: 'Send new password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+        = form.input :name, label: false, placeholder: 'Name'
+      .form-group
+        = form.input :email, label: false, placeholder: 'E-mail'
       - if can? :manage, User
-        = link_to activate_button_text(@user.is_active?), toggle_active_user_path(@user), class: 'btn btn-default', method: :patch
+        .form-group
+          = form.input :role, collection: roles_for_select, prompt: 'Choose Role', label: false
+      %hr
+      .form-actions
+        = form.submit 'Update details', class: 'btn btn-primary'
+        = link_to fa_icon('send-o', text: 'Send new password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+        - if can? :manage, User
+          = link_to activate_button_text(@user.is_active?), toggle_active_user_path(@user), class: 'btn btn-default', method: :patch
