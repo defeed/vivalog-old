@@ -37,4 +37,10 @@ class User < ActiveRecord::Base
       role == r.to_s
     end
   end
+
+  protected
+
+  def password_required?
+    persisted?
+  end
 end
