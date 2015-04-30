@@ -12,8 +12,14 @@
           = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
         = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
       %ul.nav.navbar-nav
-        %li= link_to 'Projects', projects_path
-        %li= link_to 'Users', users_path
+        %li= link_to fa_icon('building-o', text: 'Projects'), projects_path
+        %li= link_to fa_icon('users', text: 'Users'), users_path
       %ul.nav.navbar-nav.navbar-right
-        %li.navbar-text= current_user
-        %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+        %li= link_to fa_icon('plus', text: 'Log'), new_entry_path
+        %li.dropdown
+          %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
+            = current_user
+            %span.caret
+          %ul.dropdown-menu
+            %li= link_to fa_icon('user', text: 'My profile'), profile_path
+            %li= link_to fa_icon('sign-out', text: 'Sign out'), destroy_user_session_path, method: :delete

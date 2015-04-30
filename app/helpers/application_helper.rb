@@ -29,12 +29,19 @@ module ApplicationHelper
   end
 
   def status_label(is_active)
-    string = is_active ? I18n.t('statuses.active') : I18n.t('statuses.inactive')
-    label_class = is_active ? 'success' : 'default'
+    if is_active
+      string = I18n.t('statuses.active')
+      content = fa_icon('check-circle-o', text: string)
+      label_class = 'success'
+    else
+      string = I18n.t('statuses.inactive')
+      content = fa_icon('ban', text: string)
+      label_class = 'default'
+    end
 
     content_tag(
       :span,
-      string,
+      content,
       class: "label label-#{label_class}"
     )
   end
@@ -48,6 +55,10 @@ module ApplicationHelper
   end
 
   def activate_button_text(is_active)
-    is_active ? I18n.t('statuses.deactivate') : I18n.t('statuses.activate')
+    if is_active
+      fa_icon 'lock', text: I18n.t('statuses.deactivate')
+    else
+      fa_icon 'unlock', text: I18n.t('statuses.activate')
+    end
   end
 end
