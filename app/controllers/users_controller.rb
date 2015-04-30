@@ -3,10 +3,22 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @user = User.new
     @users = User.order(created_at: :asc)
   end
 
   def show
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to @user
+    else
+      # @user = User.new
+      @users = User.order(created_at: :asc)
+      render :index
+    end
   end
 
   def reset_password
@@ -17,5 +29,11 @@ class UsersController < ApplicationController
   def toggle_active
     @user.toggle! :is_active
     redirect_to @user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :username)
   end
 end

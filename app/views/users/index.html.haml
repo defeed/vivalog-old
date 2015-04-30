@@ -1,5 +1,17 @@
 %h1 Users
 
+.well.well-default
+  = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
+    = form.error_notification
+    .form-group
+      = form.input :name, label: false, placeholder: 'Name'
+    .form-group
+      = form.input :email, label: false, placeholder: 'E-mail'
+    .form-group
+      = form.input :username, label: false, placeholder: 'Username'
+    = form.submit 'Create user', class: 'btn btn-primary'
+
+
 %table.table.table-bordered.table-striped
   %thead
     %tr
