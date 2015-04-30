@@ -15,7 +15,6 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user
     else
-      # @user = User.new
       @users = User.order(created_at: :asc)
       render :index
     end
@@ -34,6 +33,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :role)
   end
 end
