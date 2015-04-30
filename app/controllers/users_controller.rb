@@ -10,10 +10,18 @@ class UsersController < ApplicationController
   def show
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User details updated'
+    else
+      render :show
+    end
+  end
+
   def create
     @user = User.new(user_params.merge(password: SecureRandom.hex))
     if @user.save
-      redirect_to @user
+      redirect_to @user, notice: 'User created'
     else
       @users = User.order(created_at: :asc)
       render :index
