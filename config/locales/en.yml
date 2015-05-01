@@ -15,3 +15,8 @@ en:
     receive: Receiving
     polish: Polishing
     other: Other
+
+  not_finalized_reasons:
+    no_entries: it has no entries
+    workers_not_eql: "number of workers and entries don't match"
+    date_in_future: work date is in future

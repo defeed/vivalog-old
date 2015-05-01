@@ -18,6 +18,19 @@ class Project < ActiveRecord::Base
     entries.map(&:workers).inject(:+).to_f / entries.count
   end
 
+  def finalizable?
+    not_finalized_reasons.none?
+  end
+
+  def not_finalized_reasons
+    reasons = []
+    reasons.push :no_entries if entries.none?
+    reasons.push :workers_not_eql unless entries.count == avg_workers
+    reasons.push :date_in_future if date > Date.today
+
+    reasons
+  end
+
   def finalize
     return [false, :no_entries] if entries.none?
     return [false, :workers_not_eql] unless entries.count == avg_workers
