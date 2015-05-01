@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20150501131915) do
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.date     "worked_on"
-    t.decimal  "coefficient", default: 1.0, null: false
+    t.integer  "project_id",  null: false
+    t.integer  "user_id",     null: false
+    t.date     "worked_on",   null: false
+    t.decimal  "coefficient"
     t.integer  "workers"
-    t.string   "work_type"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "work_type",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "payouts", force: :cascade do |t|

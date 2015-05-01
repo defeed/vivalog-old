@@ -1,12 +1,12 @@
 class CreateEntries < ActiveRecord::Migration
   def change
     create_table :entries do |t|
-      t.integer :project_id
-      t.integer :user_id
-      t.date :worked_on
-      t.decimal :coefficient, null: false, default: 1
+      t.integer :project_id, null: false
+      t.integer :user_id, null: false
+      t.date :worked_on, null: false
+      t.decimal :coefficient
       t.integer :workers
-      t.string :work_type
+      t.string :work_type, null: false
 
       t.timestamps null: false
     end
