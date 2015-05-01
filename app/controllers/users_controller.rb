@@ -44,6 +44,10 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def hourly_rate
+    render json: @user.hourly_rate
+  end
+
   private
 
   def user_params

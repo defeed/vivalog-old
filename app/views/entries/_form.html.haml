@@ -20,7 +20,7 @@
       .col-sm-2#hours
         = form.input :hours
       .col-sm-2#hourly-rate
-        = form.input :hourly_rate
+        = form.input :hourly_rate, input_html: { value: current_user.hourly_rate }
     .row
       .col-sm-6
         = form.input :comment
