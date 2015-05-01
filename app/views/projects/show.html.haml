@@ -38,7 +38,7 @@
     %tbody
       - @entries.each do |entry|
         %tr
-          %td Herp Derp
+          %td= entry.user
           %td= moment(entry.worked_on)
           %td= entry.work_type
           %td= entry.workers

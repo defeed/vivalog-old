@@ -3,13 +3,13 @@ class EntriesController < ApplicationController
   load_and_authorize_resource
 
   def new
-    @entry = Entry.new
+    @entry = current_user.entries.new
   end
 
   def create
-    @entry = Entry.new(entry_params)
+    @entry = current_user.entries.new(entry_params)
     if @entry.save
-      redirect_to project_path(@entry.project)
+      redirect_to new_entry_path
     else
       render :new
     end
@@ -25,7 +25,7 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(
-      :project_id, :work_type, :workers, :coefficient, :worked_on
+      :project_id, :user_id, :work_type, :workers, :coefficient, :worked_on
     )
   end
 end
