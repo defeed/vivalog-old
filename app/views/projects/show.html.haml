@@ -40,7 +40,7 @@
         %tr
           %td= entry.user
           %td= moment(entry.worked_on)
-          %td= entry.work_type
+          %td= I18n.t("work_types.#{entry.work_type}")
           %td= entry.workers
           %td= entry.coefficient
           %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
