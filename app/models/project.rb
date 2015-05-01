@@ -31,6 +31,10 @@ class Project < ActiveRecord::Base
   def not_finalized_reasons
     reasons = []
     reasons.push :no_entries if entries.none?
+    reasons.push :no_date if date.blank?
+    reasons.push :no_volume if volume.blank?
+    reasons.push :no_price_receive if price_receive.blank?
+    reasons.push :no_price_polish if price_polish.blank?
     reasons.push :workers_not_eql unless entries.count == avg_workers
     reasons.push :date_in_future if date > Date.today
 

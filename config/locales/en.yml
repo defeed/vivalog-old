@@ -21,5 +21,9 @@ en:
 
   not_finalized_reasons:
     no_entries: it has no entries
+    no_date: date not specified
+    no_volume: volume not specified
+    no_price_receive: price (receive) not specified
+    no_price_polish: price (polish) not specified
     workers_not_eql: "number of workers and entries don't match"
     date_in_future: work date is in future
