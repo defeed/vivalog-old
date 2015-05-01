@@ -3,46 +3,48 @@
     = link_to fa_icon('list'), root_path, class: 'btn btn-primary'
   = @project.title
 
-%table.table.table-bordered
-  %thead
-    %tr
-      %th Volume
-      %th Receive
-      %th Polish
-      %th Other
-      %th Date
-      %th
-  %tbody
-    %tr
-      %td= @project.volume
-      %td
-        = number_to_currency(@project.price_receive, unit: '€')
-      %td
-        = number_to_currency(@project.price_polish, unit: '€')
-      %td
-        = number_to_currency(@project.price_other, unit: '€')
-      %td
-        %time.moment{ datetime: @project.date }
-      %td
-        = link_to fa_icon('edit'), edit_project_path(@project), class: 'btn btn-xs btn-default'
-        = link_to fa_icon('trash-o'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
-
-%table.table.table.bordered
-  %thead
-    %tr
-      %th Name
-      %th Date
-      %th Type
-      %th Workers
-      %th Coeff
-      %th
-  %tbody
-    - @entries.each do |entry|
+.table-responsive
+  %table.table.table-bordered
+    %thead
       %tr
-        %td Herp Derp
+        %th Volume
+        %th Receive
+        %th Polish
+        %th Other
+        %th Date
+        %th
+    %tbody
+      %tr
+        %td= @project.volume
         %td
-          %time.moment{ datetime: entry.worked_on }
-        %td= entry.work_type
-        %td= entry.workers
-        %td= entry.coefficient
-        %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+          = number_to_currency(@project.price_receive, unit: '€')
+        %td
+          = number_to_currency(@project.price_polish, unit: '€')
+        %td
+          = number_to_currency(@project.price_other, unit: '€')
+        %td
+          %time.moment{ datetime: @project.date }
+        %td
+          = link_to fa_icon('edit'), edit_project_path(@project), class: 'btn btn-xs btn-default'
+          = link_to fa_icon('trash-o'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+
+.table-responsive
+  %table.table.bordered
+    %thead
+      %tr
+        %th Name
+        %th Date
+        %th Type
+        %th Workers
+        %th Coeff
+        %th
+    %tbody
+      - @entries.each do |entry|
+        %tr
+          %td Herp Derp
+          %td
+            %time.moment{ datetime: entry.worked_on }
+          %td= entry.work_type
+          %td= entry.workers
+          %td= entry.coefficient
+          %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'

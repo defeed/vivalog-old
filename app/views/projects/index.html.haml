@@ -3,30 +3,31 @@
   %span
     = link_to fa_icon('plus'), new_project_path, class: 'btn btn-success'
 
-%table.table.table-bordered.table-striped.table-responsive
-  %thead
-    %tr
-      %th Title
-      %th Volume
-      %th Receive
-      %th Polish
-      %th Other
-      %th Date
-      %th{ style: 'width: 110px' }
-  %tbody
-    - @projects.each do |project|
+.table-responsive
+  %table.table.table-bordered.table-striped
+    %thead
       %tr
-        %td= link_to project.title, project_path(project)
-        %td= project.volume
-        %td
-          = number_to_currency(project.price_receive, unit: '€')
-        %td
-          = number_to_currency(project.price_polish, unit: '€')
-        %td
-          = number_to_currency(project.price_other, unit: '€')
-        %td
-          %time.moment{ datetime: project.date }
-        %td
-          .btn-group
-            = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-md btn-default'
-            = link_to fa_icon('trash-o'), project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-md btn-danger'
+        %th Title
+        %th Volume
+        %th Receive
+        %th Polish
+        %th Other
+        %th Date
+        %th{ style: 'width: 110px' }
+    %tbody
+      - @projects.each do |project|
+        %tr
+          %td= link_to project.title, project_path(project)
+          %td= project.volume
+          %td
+            = number_to_currency(project.price_receive, unit: '€')
+          %td
+            = number_to_currency(project.price_polish, unit: '€')
+          %td
+            = number_to_currency(project.price_other, unit: '€')
+          %td
+            %time.moment{ datetime: project.date }
+          %td
+            .btn-group
+              = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-md btn-default'
+              = link_to fa_icon('trash-o'), project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-md btn-danger'
