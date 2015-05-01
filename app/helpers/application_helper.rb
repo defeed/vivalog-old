@@ -71,4 +71,26 @@ module ApplicationHelper
       method: :patch
     )
   end
+
+  def eur(number)
+    return '-' unless number
+    number_to_currency(
+      number,
+      unit: '€',
+      format: '%n %u',
+      delimiter: ' ',
+      separator: ','
+    )
+  end
+
+  def volume(number)
+    return '-' unless number
+    number_to_human(
+      number,
+      units: {  unit: 'm³' },
+      precision: 5,
+      delimiter: ' ',
+      separator: ','
+    )
+  end
 end

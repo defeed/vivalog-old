@@ -16,13 +16,10 @@
         %th
     %tbody
       %tr
-        %td= @project.volume
-        %td
-          = number_to_currency(@project.price_receive, unit: '€')
-        %td
-          = number_to_currency(@project.price_polish, unit: '€')
-        %td
-          = number_to_currency(@project.price_other, unit: '€')
+        %td= volume(@project.volume)
+        %td= eur(@project.price_receive)
+        %td= eur(@project.price_polish)
+        %td= eur(@project.price_other)
         %td
           %time.moment{ datetime: @project.date }
         %td
