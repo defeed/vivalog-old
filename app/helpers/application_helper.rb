@@ -111,4 +111,13 @@ module ApplicationHelper
       separator: ','
     )
   end
+
+  def moment(value, full = false)
+    value = value.to_date unless full
+    time_class = full ? 'moment-datetime' : 'moment-date'
+    time_tag(
+      value,
+      class: time_class
+    )
+  end
 end

@@ -11,4 +11,11 @@ $ ->
       formattedDate = moment(rawDate).format("dd, LL")
       $(this).text(formattedDate)
 
-  formatDates($('time.moment'))
+  formatTimestamps = (timestamps) ->
+    timestamps.each ->
+      rawDateTime = $(this).attr('datetime')
+      formattedDateTime = moment(rawDateTime).format("llll")
+      $(this).text(formattedDateTime)
+
+  formatDates($('time.moment-date'))
+  formatTimestamps($('time.moment-datetime'))
