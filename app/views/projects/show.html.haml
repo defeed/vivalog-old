@@ -39,8 +39,7 @@
       - @entries.each do |entry|
         %tr
           %td Herp Derp
-          %td
-            %time.moment{ datetime: entry.worked_on }
+          %td= moment(entry.worked_on)
           %td= entry.work_type
           %td= entry.workers
           %td= entry.coefficient
