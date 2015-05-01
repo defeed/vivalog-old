@@ -4,4 +4,5 @@
   = role_label(@user.role)
   = status_label(@user.is_active?)
 
-= render 'form'
+- if can? :update, User
+  = render 'form'

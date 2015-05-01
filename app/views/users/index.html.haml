@@ -1,6 +1,7 @@
 %h1 Users
 
-= render 'new_user_form'
+- if can? :create, User
+  = render 'form'
 
 %table.table.table-bordered.table-striped
   %thead

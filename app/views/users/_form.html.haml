@@ -1,17 +1,19 @@
-- if can? :update, User
-  .well.well-default
-    = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
-      = form.error_notification
+.well.well-default
+  = simple_form_for(@user, html: { class: 'form-inline' }) do |form|
+    = form.error_notification
+    .form-group
+      = form.input :name, label: false, placeholder: 'Name'
+    .form-group
+      = form.input :email, label: false, placeholder: 'E-mail'
+    - if can? :manage, User
       .form-group
-        = form.input :name, label: false, placeholder: 'Name'
-      .form-group
-        = form.input :email, label: false, placeholder: 'E-mail'
-      - if can? :manage, User
-        .form-group
-          = form.input :role, collection: roles_for_select, prompt: 'Choose Role', label: false
-      %hr
-      .form-actions
+        = form.input :role, collection: roles_for_select, prompt: 'Choose Role', label: false
+    %hr
+    .form-actions
+      - if @user.persisted?
         = form.submit 'Update details', class: 'btn btn-primary'
         - if can? :manage, User
           = activate_button(@user)
         = link_to fa_icon('send-o', text: 'Send new password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+      - else
+        = form.submit 'Create user', class: 'btn btn-primary'
