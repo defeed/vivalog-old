@@ -8,7 +8,7 @@ $ ->
   $('.metadata-popover').popover({
     html: true,
     trigger: 'hover click',
-    viewport: 'body',
+    viewport: '.container',
     placement: 'bottom',
     content: ->
       return $('.metadata-content').html()
