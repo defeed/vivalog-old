@@ -16,6 +16,9 @@ en:
     polish: Polishing
     other: Other
 
+  project_finalized: Finalized
+  project_not_finalized: Not finalized
+
   not_finalized_reasons:
     no_entries: it has no entries
     workers_not_eql: "number of workers and entries don't match"

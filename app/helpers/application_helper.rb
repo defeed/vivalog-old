@@ -72,6 +72,24 @@ module ApplicationHelper
     )
   end
 
+  def project_finalized_label(finalized)
+    if finalized
+      string = I18n.t(:project_finalized)
+      content = fa_icon('check-square-o', text: string)
+      label_class = 'success'
+    else
+      string = I18n.t(:project_not_finalized)
+      content = fa_icon('square-o', text: string)
+      label_class = 'default'
+    end
+
+    content_tag(
+      :span,
+      content,
+      class: "label label-#{label_class}"
+    )
+  end
+
   def eur(number)
     return '-' unless number
     number_to_currency(
