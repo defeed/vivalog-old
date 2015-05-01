@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :role, presence: true
 
+  has_many :payouts
+
   def to_s
     name
   end

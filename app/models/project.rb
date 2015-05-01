@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :title
 
+  has_many :payouts
   belongs_to :finalizer, class_name: 'User', foreign_key: 'finalized_by'
 
   scope :not_finalized, -> { where(finalized_at: nil) }
