@@ -33,7 +33,8 @@ class Project < ActiveRecord::Base
 
   def finalize
     if finalizable?
-      update.finalized_at = Time.now and true
+      update finalized_at: Time.now
+      true
     else
       not_finalized_reasons
     end
