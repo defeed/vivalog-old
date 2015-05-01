@@ -6,14 +6,13 @@
         = form.input :title, placeholder: 'Title or address'
       .col-md-4
         = form.input :date, as: 'string', placeholder: 'Select work date', input_html: { class: 'datepicker', value: form.object.date.try(:strftime, '%d.%m.%Y') }
-      .col-md-4
+      .col-md-4.col-xs-6
         = form.input :volume, placeholder: 'Volume (m³)'
-    .row
-      .col-md-4
+      .col-md-4.col-xs-6
         = form.input :price_receive, label: 'Price (receive)'
-      .col-md-4
+      .col-md-4.col-xs-6
         = form.input :price_polish, label: 'Price (polish)'
-      .col-md-4
+      .col-md-4.col-xs-6
         = form.input :price_other, label: 'Price (other)'
     .row
       .col-md-12
