@@ -13,7 +13,6 @@
         %th Polish
         %th Other
         %th Date
-        %th{ style: 'width: 110px' }
     %tbody
       - @projects.each do |project|
         %tr
@@ -23,7 +22,3 @@
           %td= eur(project.price_polish)
           %td= eur(project.price_other)
           %td= moment(project.date)
-          %td
-            .btn-group
-              = link_to fa_icon('edit'), edit_project_path(project), class: 'btn btn-md btn-default'
-              = link_to fa_icon('trash-o'), project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-md btn-danger'
