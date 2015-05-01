@@ -3,11 +3,22 @@
   - if @project.date
     %small= moment(@project.date)
 
-
-
-%p= project_finalized_label(@project.finalized?)
+%p
+  = project_finalized_label(@project.finalized?)
+  %span.label.label-default#metadata-popover{ title: 'Information' }
+    = fa_icon('calendar')
 
 = render 'form'
+
+#metadata-content{ style: 'display: none' }
+  %ul.list-unstyled.text-muted.small
+    %li
+      Created
+      = moment(@project.created_at, true)
+    - if @project.finalized?
+      %li
+        Finalized
+        = moment(@project.finalized_at, true)
 
 .table-responsive
   %table.table.bordered

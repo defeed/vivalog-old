@@ -5,6 +5,13 @@ $ ->
     showTodayButton: true
   })
 
+  $('#metadata-popover').popover({
+    html: true,
+    trigger: 'hover',
+    content: ->
+      return $('#metadata-content').html()
+  })
+
   formatDates = (dates) ->
     dates.each ->
       rawDate = $(this).attr('datetime')
