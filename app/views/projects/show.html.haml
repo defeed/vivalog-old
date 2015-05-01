@@ -1,6 +1,9 @@
 %h1
   = @project.title
 
+%p
+  = link_to fa_icon('check-square-o', text: 'Finalize'), finalize_project_path(@project), class: 'btn btn-success', method: :patch
+
 .table-responsive
   %table.table.table-bordered
     %thead

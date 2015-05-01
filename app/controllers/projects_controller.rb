@@ -40,6 +40,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def finalize
+    result = @project.finalize
+
+    if result == true
+      flash[:notice] = 'Project has been finalized'
+    else
+      reasons = result.map do |reason|
+        I18n.t("not_finalized_reasons.#{reason}")
+      end.to_sentence
+
+      flash[:error] = "Project cannot be finalized because #{reasons}"
+    end
+    redirect_to @project
+  end
+
   private
 
   def project_params

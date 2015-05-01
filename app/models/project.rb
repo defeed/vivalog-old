@@ -32,11 +32,11 @@ class Project < ActiveRecord::Base
   end
 
   def finalize
-    return [false, :no_entries] if entries.none?
-    return [false, :workers_not_eql] unless entries.count == avg_workers
-    return [false, :date_in_future] if date > Date.today
-    # TODO: implement stuff
-    true
+    if finalizable?
+      update.finalized_at = Time.now and true
+    else
+      not_finalized_reasons
+    end
   end
 
   def finalized?

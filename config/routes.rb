@@ -11,7 +11,11 @@ Rails.application.routes.draw do
       patch :toggle_active
     end
   end
-  resources :projects
+  resources :projects do
+    member do
+      patch :finalize
+    end
+  end
   resources :entries, only: [:new, :create, :destroy]
   resource :dashboard, only: :index
   get :profile, to: 'users#show_profile'
