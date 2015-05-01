@@ -1,13 +1,23 @@
-= simple_form_for(@entry, html: { class: 'form-vertical' }) do |form|
-  .row
-    .col-sm-2
-      = form.input :worked_on, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: Date.today.strftime('%d.%m.%Y') }
-  .row
-    .col-sm-3
-      = form.association :project, collection: Project.not_finalized, prompt: 'Choose Project'
-      = form.input :work_type, collection: work_types_for_select, prompt: 'Choose Type'
-  .row
-    .col-sm-2
-      = form.input :workers
-      = form.input :coefficient
-  = form.submit 'Save', class: 'btn btn-lg btn-primary'
+.well.well-default
+  = simple_form_for @entry do |form|
+    = form.error_notification
+    .row
+      .col-sm-4
+        = form.input :worked_on, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: Date.today.strftime('%d.%m.%Y') }
+      .col-sm-4
+        = form.association :project, collection: Project.not_finalized, prompt: 'Choose Project'
+      .col-sm-4
+        = form.input :work_type, collection: work_types_for_select, prompt: 'Choose Type'
+    .row
+      .col-sm-2#workers
+        = form.input :workers
+      .col-sm-2#coefficient
+        = form.input :coefficient
+      .col-sm-2#hours
+        = form.input :hours
+      .col-sm-2#hourly-rate
+        = form.input :hourly_rate
+    .row
+      .col-sm-6
+        = form.input :comment
+    = form.submit 'Save', class: 'btn btn-primary'

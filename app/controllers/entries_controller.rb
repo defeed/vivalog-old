@@ -25,7 +25,8 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(
-      :project_id, :user_id, :work_type, :workers, :coefficient, :worked_on
+      :project_id, :user_id, :work_type, :workers, :coefficient, :worked_on,
+      :hours, :hourly_rate, :comment
     )
   end
 end
