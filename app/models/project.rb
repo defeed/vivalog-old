@@ -38,14 +38,11 @@ class Project < ActiveRecord::Base
   end
 
   def finalize(user)
-    if finalizable?
-      update(
-        finalized_at: Time.now,
-        finalized_by: user.id
-      )
+    return not_finalized_reasons unless finalizable?
+
+    transaction do
+      update(finalized_at: Time.now, finalizer: user)
       true
-    else
-      not_finalized_reasons
     end
   end
 
