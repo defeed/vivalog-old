@@ -24,4 +24,8 @@ class Project < ActiveRecord::Base
     # TODO: implement stuff
     true
   end
+
+  def finalized?
+    !!finalized_at
+  end
 end
