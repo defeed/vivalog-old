@@ -7,7 +7,12 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = current_user.entries.new(entry_params)
+    if params[:entry][:user_id]
+      @entry = Entry.new(entry_params_for_user)
+    else
+      @entry = current_user.entries.new(entry_params)
+    end
+
     if @entry.save
       redirect_to new_entry_path
     else
@@ -25,8 +30,12 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(
-      :project_id, :user_id, :work_type, :workers, :coefficient, :worked_on,
-      :hours, :hourly_rate, :comment
+      :project_id, :work_type, :workers, :coefficient, :worked_on, :hours,
+      :hourly_rate, :comment
     )
+  end
+
+  def entry_params_for_user
+    params.require(:entry).permit!
   end
 end

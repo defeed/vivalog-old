@@ -1,6 +1,10 @@
 .well.well-default
   = simple_form_for @entry do |form|
     = form.error_notification
+    - if can? :manage, User
+      .row
+        .col-sm-4
+          = form.association :user, collection: User.active, prompt: false
     .row
       .col-sm-4
         = form.input :worked_on, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: Date.today.strftime('%d.%m.%Y') }

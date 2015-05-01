@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :entries
   has_many :payouts
 
+  scope :active, -> { where(is_active: true) }
+
   def to_s
     name
   end
