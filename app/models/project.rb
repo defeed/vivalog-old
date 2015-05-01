@@ -36,7 +36,7 @@ class Project < ActiveRecord::Base
     reasons.push :no_price_receive if price_receive.blank?
     reasons.push :no_price_polish if price_polish.blank?
     reasons.push :workers_not_eql unless entries.count == avg_workers
-    reasons.push :date_in_future if date > Date.today
+    reasons.push :date_in_future if date && date > Date.today
 
     reasons
   end
