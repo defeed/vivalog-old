@@ -61,4 +61,14 @@ module ApplicationHelper
       fa_icon 'unlock', text: I18n.t('statuses.activate')
     end
   end
+
+  def activate_button(user)
+    btn_class = user.is_active ? 'danger' : 'success'
+    link_to(
+      activate_button_text(user.is_active?),
+      toggle_active_user_path(user),
+      class: "btn btn-#{btn_class}",
+      method: :patch
+    )
+  end
 end

@@ -12,6 +12,6 @@
       %hr
       .form-actions
         = form.submit 'Update details', class: 'btn btn-primary'
-        = link_to fa_icon('send-o', text: 'Send new password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
         - if can? :manage, User
-          = link_to activate_button_text(@user.is_active?), toggle_active_user_path(@user), class: 'btn btn-default', method: :patch
+          = activate_button(@user)
+        = link_to fa_icon('send-o', text: 'Send new password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
