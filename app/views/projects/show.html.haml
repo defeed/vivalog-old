@@ -10,17 +10,20 @@
 = render 'form'
 
 .metadata-content
-  %dl.small
+  %dl.dl-horizontal.small
     %dt Created
     %dd
       = fa_icon('calendar')
       = moment(@project.created_at, true)
-  - if @project.finalized?
-    %dl.small
+    - if @project.finalized?
       %dt Finalized
       %dd
         = fa_icon('calendar')
         = moment(@project.finalized_at, true)
+      %dt
+      %dd
+        = fa_icon('user')
+        = @project.finalizer
 
 .table-responsive
   %table.table.bordered

@@ -9,3 +9,9 @@ body {
 .metadata-content {
   display: none;
 }
+
+.popover-content {
+  dl:last-child {
+    margin-bottom: 0;
+  }
+}
