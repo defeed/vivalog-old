@@ -3,6 +3,11 @@ class Project < ActiveRecord::Base
 
   validates_presence_of :title
 
+  belongs_to :finalizer, class_name: 'User', foreign_key: 'finalized_by'
+
+  scope :not_finalized, -> { where(finalized_at: nil) }
+  scope :finalized, -> { where.not(finalized_at: nil) }
+
   def self.search(query = nil)
     if query
       result = where('title ILIKE ?', "%#{query}%")
@@ -31,9 +36,12 @@ class Project < ActiveRecord::Base
     reasons
   end
 
-  def finalize
+  def finalize(user)
     if finalizable?
-      update finalized_at: Time.now
+      update(
+        finalized_at: Time.now,
+        finalized_by: user.id
+      )
       true
     else
       not_finalized_reasons

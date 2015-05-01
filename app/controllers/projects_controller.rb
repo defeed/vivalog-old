@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def finalize
-    result = @project.finalize
+    result = @project.finalize(current_user)
 
     if result == true
       flash[:notice] = 'Project has been finalized'
