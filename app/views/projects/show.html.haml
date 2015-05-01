@@ -5,19 +5,21 @@
 
 %p
   = project_finalized_label(@project.finalized?)
-  %span.label.label-default#metadata-popover{ title: 'Information' }
-    = fa_icon('calendar')
+  = metadata_label
 
 = render 'form'
 
-#metadata-content{ style: 'display: none' }
-  %ul.list-unstyled.text-muted.small
-    %li
-      Created
+.metadata-content
+  %dl.small
+    %dt Created
+    %dd
+      = fa_icon('calendar')
       = moment(@project.created_at, true)
-    - if @project.finalized?
-      %li
-        Finalized
+  - if @project.finalized?
+    %dl.small
+      %dt Finalized
+      %dd
+        = fa_icon('calendar')
         = moment(@project.finalized_at, true)
 
 .table-responsive

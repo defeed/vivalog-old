@@ -120,4 +120,13 @@ module ApplicationHelper
       class: time_class
     )
   end
+
+  def metadata_label
+    content_tag(
+      :span,
+      fa_icon('info-circle'),
+      class: 'label label-default metadata-popover',
+      title: 'Information'
+    )
+  end
 end

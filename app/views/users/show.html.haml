@@ -5,6 +5,14 @@
 %p
   = role_label(@user.role)
   = status_label(@user.is_active?)
+  = metadata_label
+
+.metadata-content
+  %dl.small
+    %dt Registered
+    %dd
+      = fa_icon('calendar')
+      = moment(@user.created_at, true)
 
 - if can? :update, User
   = render 'form'
