@@ -1,4 +1,6 @@
-%h1= "#{@user} (#{@user.email})"
+%h1
+  = @user
+  %small= "#{@user.email}"
 
 %p
   = role_label(@user.role)
