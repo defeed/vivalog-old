@@ -7,7 +7,7 @@
       .col-md-4
         = form.input :date, as: 'string', placeholder: 'Select work date', input_html: { class: 'datepicker', value: form.object.date.try(:strftime, '%d.%m.%Y') }
       .col-md-4.col-xs-6
-        = form.input :volume, placeholder: 'Volume (m³)'
+        = form.input :volume, placeholder: 'Volume (m²)'
       .col-md-4.col-xs-6
         = form.input :price_receive, label: 'Price (receive)'
       .col-md-4.col-xs-6

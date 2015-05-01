@@ -105,7 +105,7 @@ module ApplicationHelper
     return '-' unless number
     number_to_human(
       number,
-      units: {  unit: 'm³' },
+      units: {  unit: 'm²' },
       precision: 5,
       delimiter: ' ',
       separator: ','
