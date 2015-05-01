@@ -2,13 +2,15 @@
   = simple_form_for @user do |form|
     = form.error_notification
     .row
-      .col-md-4.col-xs-6
+      .col-md-3.col-xs-12
         = form.input :name, placeholder: 'Name'
-      .col-md-4.col-xs-6
+      .col-md-3.col-xs-12
         = form.input :email, placeholder: 'E-mail'
       - if can? :manage, User
-        .col-md-4
+        .col-md-4.col-xs-6
           = form.input :role, collection: roles_for_select, prompt: 'Choose Role'
+        .col-md-2.col-xs-6
+          = form.input :hourly_rate, placeholder: '€'
     .row
       .col-md-12
         - if @user.persisted?
