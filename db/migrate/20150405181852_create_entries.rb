@@ -7,6 +7,9 @@ class CreateEntries < ActiveRecord::Migration
       t.decimal :coefficient
       t.integer :workers
       t.string :work_type, null: false
+      t.decimal :hours
+      t.decimal :hourly_rate
+      t.text :comment
 
       t.timestamps null: false
     end

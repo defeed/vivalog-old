@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20150501131915) do
     t.decimal  "coefficient"
     t.integer  "workers"
     t.string   "work_type",   null: false
+    t.decimal  "hours"
+    t.decimal  "hourly_rate"
+    t.text     "comment"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
