@@ -1,30 +1,7 @@
 %h1
   = @project.title
 
-%p
-  = link_to fa_icon('check-square-o', text: 'Finalize'), finalize_project_path(@project), class: 'btn btn-success', method: :patch
-
-.table-responsive
-  %table.table.table-bordered
-    %thead
-      %tr
-        %th Volume
-        %th Receive
-        %th Polish
-        %th Other
-        %th Date
-        %th
-    %tbody
-      %tr
-        %td= volume(@project.volume)
-        %td= eur(@project.price_receive)
-        %td= eur(@project.price_polish)
-        %td= eur(@project.price_other)
-        %td
-          %time.moment{ datetime: @project.date }
-        %td
-          = link_to fa_icon('edit'), edit_project_path(@project), class: 'btn btn-xs btn-default'
-          = link_to fa_icon('trash-o'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+= render 'form'
 
 .table-responsive
   %table.table.bordered

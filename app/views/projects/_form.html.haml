@@ -1,12 +1,25 @@
-= simple_form_for(@project, html: { class: 'form-vertical' }) do |form|
-  .row
-    .col-sm-4
-      = form.input :title
-  .row
-    .col-sm-2
-      = form.input :date, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: form.object.date.try(:strftime, '%d.%m.%Y') }
-      = form.input :volume
-      = form.input :price_receive, label: 'Price (receive)'
-      = form.input :price_polish, label: 'Price (polish)'
-      = form.input :price_other, label: 'Price (other)'
-  = form.submit 'Save', class: 'btn btn-lg btn-primary'
+.well.well-default
+  = simple_form_for @project do |form|
+    = form.error_notification
+    .row
+      .col-md-4
+        = form.input :title, placeholder: 'Title or address'
+      .col-md-4
+        = form.input :date, as: 'string', placeholder: 'Select work date', input_html: { class: 'datepicker', value: form.object.date.try(:strftime, '%d.%m.%Y') }
+      .col-md-4
+        = form.input :volume, placeholder: 'Volume (m³)'
+    .row
+      .col-md-4
+        = form.input :price_receive, label: 'Price (receive)'
+      .col-md-4
+        = form.input :price_polish, label: 'Price (polish)'
+      .col-md-4
+        = form.input :price_other, label: 'Price (other)'
+    .row
+      .col-md-12
+        - if @project.persisted?
+          = form.submit 'Save', class: 'btn btn-primary'
+          = link_to fa_icon('check-square-o', text: 'Finalize'), finalize_project_path(@project), class: 'btn btn-success', method: :patch
+          = link_to fa_icon('trash-o', text: 'Delete'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+        - else
+          = form.submit 'Create', class: 'btn btn-primary'

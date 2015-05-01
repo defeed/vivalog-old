@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @project = Project.new
     @projects = Project.search(params[:query])
   end
 
@@ -10,33 +11,27 @@ class ProjectsController < ApplicationController
     @entries = @project.entries
   end
 
-  def new
-    @project = Project.new
-  end
-
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to root_path
+      redirect_to @project, notice: 'Project created'
     else
-      render :new
+      @projects = Project.search
+      render :index
     end
-  end
-
-  def edit
   end
 
   def update
     if @project.update(project_params)
-      redirect_to root_path
+      redirect_to @project, notice: 'Project details updated'
     else
-      render :edit
+      render :show
     end
   end
 
   def destroy
     if @project.destroy
-      redirect_to root_path
+      redirect_to projects_path, notice: "Project #{@project.title} deleted"
     end
   end
 
