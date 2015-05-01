@@ -14,6 +14,7 @@ class Project < ActiveRecord::Base
   end
 
   def avg_workers
+    return 0 if entries.none?
     entries.map(&:workers).inject(:+).to_f / entries.count
   end
 
