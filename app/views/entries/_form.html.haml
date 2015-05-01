@@ -4,7 +4,7 @@
       = form.input :worked_on, as: 'string', label: 'Date', input_html: { class: 'datepicker', value: Date.today.strftime('%d.%m.%Y') }
   .row
     .col-sm-3
-      = form.association :project, collection: Project.all, prompt: 'Choose Project'
+      = form.association :project, collection: Project.not_finalized, prompt: 'Choose Project'
       = form.input :work_type, collection: work_types_for_select, prompt: 'Choose Type'
   .row
     .col-sm-2
