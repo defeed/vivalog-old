@@ -13,6 +13,11 @@
     %dd
       = fa_icon('calendar')
       = moment(@user.created_at, true)
+    - if @user.reset_password_sent_at
+      %dt Password sent
+      %dd
+        = fa_icon('calendar')
+        = moment(@user.reset_password_sent_at, true)
 
 - if can? :update, User
   = render 'form'
