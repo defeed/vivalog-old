@@ -1,5 +1,9 @@
 %h1
   = @project.title
+  - if @project.date
+    %small= moment(@project.date)
+
+
 
 %p= project_finalized_label(@project.finalized?)
 
