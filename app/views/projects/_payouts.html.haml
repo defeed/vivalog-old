@@ -14,5 +14,5 @@
           %td= entry.user
           %td= moment(entry.worked_on)
           %td= I18n.t("work_types.#{entry.work_type}")
-          %td= payment_for_entry(entry)
+          %td= payment_data_for_entry(entry)
           %td= eur(entry.payout.amount)
