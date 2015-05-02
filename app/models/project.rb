@@ -59,10 +59,9 @@ class Project < ActiveRecord::Base
         base_rate = send("rate_#{work_type}") / base_coeff
 
         project_entries.each do |entry|
-          Payout.create!(
+          entry.create_payout!(
             project: self,
             user: entry.user,
-            work_type: work_type,
             amount: base_rate * entry.coefficient
           )
         end
