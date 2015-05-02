@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  has_one :payout
 
   validates :user_id, :project_id, :worked_on, :work_type, presence: true
   validates :coefficient, :workers,

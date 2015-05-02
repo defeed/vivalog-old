@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20150501172443) do
   end
 
   create_table "payouts", force: :cascade do |t|
+    t.integer  "entry_id",   null: false
     t.integer  "user_id",    null: false
     t.integer  "project_id", null: false
-    t.string   "work_type",  null: false
     t.decimal  "amount",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

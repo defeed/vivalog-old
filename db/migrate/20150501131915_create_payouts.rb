@@ -1,9 +1,9 @@
 class CreatePayouts < ActiveRecord::Migration
   def change
     create_table :payouts do |t|
+      t.integer :entry_id, null: false
       t.integer :user_id, null: false
       t.integer :project_id, null: false
-      t.string :work_type, null: false
       t.decimal :amount, null: false
 
       t.timestamps null: false
