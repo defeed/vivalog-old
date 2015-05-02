@@ -1,22 +1,23 @@
 .well.well-default
   .row
-    .col-sm-6
+    .col-sm-4
       %dl.dl-horizontal
         %dt Volume
         %dd= volume(@project.volume)
-    .col-sm-6
-      %dl.dl-horizontal
-        %dt Price (receive)
-        %dd= eur(@project.rate_receive)
-    .col-sm-6
-      %dl.dl-horizontal
-        %dt Price (polish)
-        %dd= eur(@project.rate_polish)
-    .col-sm-6
-      %dl.dl-horizontal
-        %dt Hourly rate
-        %dd= eur(@project.hourly_rate)
-    .col-sm-6
+    .col-sm-4
       %dl.dl-horizontal
         %dt Workers
         %dd= @project.workers.count
+  .row
+    .col-sm-4
+      %dl.dl-horizontal
+        %dt Price (receive)
+        %dd= eur(@project.rate_receive)
+    .col-sm-4
+      %dl.dl-horizontal
+        %dt Price (polish)
+        %dd= eur(@project.rate_polish)
+    .col-sm-4
+      %dl.dl-horizontal
+        %dt Hourly rate
+        %dd= eur(@project.hourly_rate)
