@@ -19,9 +19,10 @@ class Project < ActiveRecord::Base
     result.order(date: :desc)
   end
 
-  def avg_workers
-    return 0 if entries.none?
-    entries.map(&:workers).inject(:+).to_f / entries.count
+  def avg_workers_for(work_type)
+    entries_with_type = entries.with_type(work_type)
+    return 0 if entries_with_type.none?
+    entries_with_type.map(&:workers).inject(:+).to_f / entries_with_type.count
   end
 
   def finalizable?
@@ -35,7 +36,12 @@ class Project < ActiveRecord::Base
     reasons.push :no_volume if volume.blank?
     reasons.push :no_rate_receive if rate_receive.blank?
     reasons.push :no_rate_polish if rate_polish.blank?
-    # reasons.push :workers_not_eql unless entries.count == avg_workers
+    reasons.push :workers_receive_not_eql unless begin
+      entries.with_type(:receive).count == avg_workers_for(:receive)
+    end
+    reasons.push :workers_polish_not_eql unless begin
+      entries.with_type(:polish).count == avg_workers_for(:polish)
+    end
     reasons.push :date_in_future if date && date > Date.today
 
     reasons

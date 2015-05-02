@@ -13,6 +13,8 @@ class Entry < ActiveRecord::Base
 
   before_create :remove_workers_and_coefficient
 
+  scope :with_type, ->(work_type) { where(work_type: work_type)}
+
   def type_other?
     work_type == 'other'
   end
