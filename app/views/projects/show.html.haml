@@ -25,6 +25,7 @@
         = fa_icon('user')
         = @project.finalizer
 
+%h2 Entries
 .table-responsive
   %table.table.bordered
     %thead
@@ -36,7 +37,7 @@
         %th Coeff
         %th
     %tbody
-      - @entries.each do |entry|
+      - @project.entries.each do |entry|
         %tr
           %td= entry.user
           %td= moment(entry.worked_on)
