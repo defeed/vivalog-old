@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :payouts
 
   scope :active, -> { where(is_active: true) }
+  scope :workers, -> { where(role: :worker) }
 
   def to_s
     name
