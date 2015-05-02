@@ -33,8 +33,8 @@ class Project < ActiveRecord::Base
     reasons.push :no_entries if entries.none?
     reasons.push :no_date if date.blank?
     reasons.push :no_volume if volume.blank?
-    reasons.push :no_price_receive if price_receive.blank?
-    reasons.push :no_price_polish if price_polish.blank?
+    reasons.push :no_rate_receive if rate_receive.blank?
+    reasons.push :no_rate_polish if rate_polish.blank?
     reasons.push :workers_not_eql unless entries.count == avg_workers
     reasons.push :date_in_future if date && date > Date.today
 

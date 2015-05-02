@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 20150501172443) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.float    "volume"
-    t.decimal  "price_receive"
-    t.decimal  "price_polish"
-    t.decimal  "price_other"
+    t.decimal  "rate_receive"
+    t.decimal  "rate_polish"
+    t.decimal  "hourly_rate"
     t.date     "date"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.datetime "finalized_at"
     t.integer  "finalized_by"
   end

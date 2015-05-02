@@ -23,7 +23,7 @@ en:
     no_entries: it has no entries
     no_date: date not specified
     no_volume: volume not specified
-    no_price_receive: price (receive) not specified
-    no_price_polish: price (polish) not specified
+    no_rate_receive: rate (receive) not specified
+    no_rate_polish: rate (polish) not specified
     workers_not_eql: "number of workers and entries don't match"
     date_in_future: work date is in future

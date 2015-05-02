@@ -59,9 +59,9 @@ class ProjectsController < ApplicationController
         :title,
         :date,
         :volume,
-        :price_receive,
-        :price_polish,
-        :price_other
+        :rate_receive,
+        :rate_polish,
+        :hourly_rate
       )
   end
 end

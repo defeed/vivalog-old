@@ -11,14 +11,14 @@
         %th Volume
         %th Receive
         %th Polish
-        %th Other
+        %th Hourly rate
         %th Date
     %tbody
       - @projects.each do |project|
         %tr
           %td= link_to project.title, project_path(project)
           %td= volume(project.volume)
-          %td= eur(project.price_receive)
-          %td= eur(project.price_polish)
-          %td= eur(project.price_other)
+          %td= eur(project.rate_receive)
+          %td= eur(project.rate_polish)
+          %td= eur(project.hourly_rate)
           %td= moment(project.date)
