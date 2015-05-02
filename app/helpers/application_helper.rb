@@ -129,4 +129,22 @@ module ApplicationHelper
       title: 'Information'
     )
   end
+
+  def payment_data_for_entry(entry)
+    if ['receive', 'polish'].include?(entry.work_type)
+      "#{coeff(entry.coefficient)} × #{eur(entry.payout.base_amount)}"
+    else
+      "#{entry.hours} × #{eur(entry.hourly_rate)}"
+    end
+  end
+
+  def coeff(number)
+    return '-' unless number
+    number_to_human(
+      number,
+      units: nil,
+      precision: 1,
+      separator: ','
+    )
+  end
 end

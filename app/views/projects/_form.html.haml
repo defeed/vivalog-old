@@ -18,8 +18,7 @@
       .col-md-12
         - if @project.persisted?
           = form.submit 'Save', class: 'btn btn-primary'
-          - unless @project.finalized?
-            = link_to fa_icon('check-square-o', text: 'Finalize'), finalize_project_path(@project), class: 'btn btn-success', method: :patch
+          = link_to fa_icon('check-square-o', text: 'Finalize'), finalize_project_path(@project), class: 'btn btn-success', method: :patch
           = link_to fa_icon('trash-o', text: 'Delete'), project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
         - else
           = form.submit 'Create', class: 'btn btn-primary'

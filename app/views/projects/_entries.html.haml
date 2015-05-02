@@ -1,0 +1,20 @@
+%h2 Entries
+.table-responsive
+  %table.table.bordered
+    %thead
+      %tr
+        %th Name
+        %th Work date
+        %th Work
+        %th Workers
+        %th Coeff
+        %th
+    %tbody
+      - @project.entries.each do |entry|
+        %tr
+          %td= entry.user
+          %td= moment(entry.worked_on)
+          %td= I18n.t("work_types.#{entry.work_type}")
+          %td= entry.workers
+          %td= coeff(entry.coefficient)
+          %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
