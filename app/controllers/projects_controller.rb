@@ -58,8 +58,8 @@ class ProjectsController < ApplicationController
         :title,
         :date,
         :volume,
-        :rate_receive,
-        :rate_polish,
+        :price_receive,
+        :price_polish,
         :hourly_rate
       )
   end

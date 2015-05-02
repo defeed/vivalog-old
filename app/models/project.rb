@@ -34,8 +34,8 @@ class Project < ActiveRecord::Base
     reasons.push :no_entries if entries.none?
     reasons.push :no_date if date.blank?
     reasons.push :no_volume if volume.blank?
-    reasons.push :no_rate_receive if rate_receive.blank?
-    reasons.push :no_rate_polish if rate_polish.blank?
+    reasons.push :no_price_receive if price_receive.blank?
+    reasons.push :no_price_polish if price_polish.blank?
     reasons.push :workers_receive_not_eql unless begin
       entries.with_type(:receive).count == avg_workers_for(:receive)
     end
@@ -69,7 +69,7 @@ class Project < ActiveRecord::Base
       %w( receive polish ).each do |work_type|
         project_entries = entries.where(work_type: work_type)
         base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
-        base_amount = send("rate_#{work_type}") / base_coeff
+        base_amount = send("price_#{work_type}") / base_coeff
 
         project_entries.each do |entry|
           entry.create_payout!(

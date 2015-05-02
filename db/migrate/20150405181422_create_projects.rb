@@ -3,8 +3,8 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :title
       t.float :volume
-      t.decimal :rate_receive
-      t.decimal :rate_polish
+      t.decimal :price_receive
+      t.decimal :price_polish
       t.decimal :hourly_rate
       t.date :date
 
