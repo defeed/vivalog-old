@@ -12,7 +12,10 @@
   = render 'payouts'
 - else
   = render 'form'
-  = render 'entries'
+  - if @project.entries.any?
+    = render 'entries'
+  - else
+    %h2 No entries
 
 .metadata-content
   %dl.dl-horizontal.small
