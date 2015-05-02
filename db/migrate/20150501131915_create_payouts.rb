@@ -4,6 +4,7 @@ class CreatePayouts < ActiveRecord::Migration
       t.integer :entry_id, null: false
       t.integer :user_id, null: false
       t.integer :project_id, null: false
+      t.decimal :base_amount, null: false
       t.decimal :amount, null: false
 
       t.timestamps null: false

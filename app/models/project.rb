@@ -69,13 +69,14 @@ class Project < ActiveRecord::Base
       %w( receive polish ).each do |work_type|
         project_entries = entries.where(work_type: work_type)
         base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
-        base_rate = send("rate_#{work_type}") / base_coeff
+        base_amount = send("rate_#{work_type}") / base_coeff
 
         project_entries.each do |entry|
           entry.create_payout!(
             project: self,
             user: entry.user,
-            amount: base_rate * entry.coefficient
+            base_amount: base_amount,
+            amount: base_amount * entry.coefficient
           )
         end
       end
