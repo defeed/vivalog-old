@@ -53,6 +53,13 @@ class Project < ActiveRecord::Base
 
   def create_payouts
     transaction do
+      create_payouts_for_fixed_work
+      create_payouts_for_hourly_work
+    end
+  end
+
+  def create_payouts_for_fixed_work
+    transaction do
       %w( receive polish ).each do |work_type|
         project_entries = entries.where(work_type: work_type)
         base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
@@ -65,6 +72,20 @@ class Project < ActiveRecord::Base
             amount: base_rate * entry.coefficient
           )
         end
+      end
+    end
+  end
+
+  def create_payouts_for_hourly_work
+    transaction do
+      project_entries = entries.where(work_type: :other)
+
+      project_entries.each do |entry|
+        entry.create_payout!(
+          project: self,
+          user: entry.user,
+          amount: entry.hourly_rate * entry.hours
+        )
       end
     end
   end
