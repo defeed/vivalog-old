@@ -45,3 +45,18 @@
           %td= entry.workers
           %td= entry.coefficient
           %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+
+%h2 Payouts
+.table-responsive
+  %table.table.bordered
+    %thead
+      %tr
+        %th Name
+        %th Type
+        %th Amount
+    %tbody
+      - @project.payouts.each do |payout|
+        %tr
+          %td= payout.user
+          %td= I18n.t("work_types.#{payout.work_type}")
+          %td= eur(payout.amount)
