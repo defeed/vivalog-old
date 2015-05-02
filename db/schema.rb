@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150501172443) do
     t.integer  "entry_id",    null: false
     t.integer  "user_id",     null: false
     t.integer  "project_id",  null: false
-    t.decimal  "base_amount", null: false
+    t.decimal  "base_amount"
     t.decimal  "amount",      null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
