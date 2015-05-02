@@ -1,8 +1,8 @@
 class Project < ActiveRecord::Base
-  has_many :entries, dependent: :destroy
-
   validates_presence_of :title
 
+  has_many :entries, dependent: :destroy
+  has_many :workers, -> { uniq }, source: :user, through: :entries
   has_many :payouts
   belongs_to :finalizer, class_name: 'User', foreign_key: 'finalized_by'
 
