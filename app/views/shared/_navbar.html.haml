@@ -7,13 +7,16 @@
         %span.icon-bar
       = link_to fa_icon('home', text: 'VIVALog'), root_path, class: 'navbar-brand'
     #navbar-collapse.collapse.navbar-collapse
-      = form_tag projects_path, class: 'navbar-form navbar-left', method: :get do
-        .form-group
-          = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
-        = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
+      - if can? :manage, Project
+        = form_tag projects_path, class: 'navbar-form navbar-left', method: :get do
+          .form-group
+            = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
+          = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
       %ul.nav.navbar-nav
-        %li= link_to fa_icon('building-o', text: 'Projects'), projects_path
-        %li= link_to fa_icon('users', text: 'Users'), users_path
+        - if can? :manage, Project
+          %li= link_to fa_icon('building-o', text: 'Projects'), projects_path
+        - if can? :manage, User
+          %li= link_to fa_icon('users', text: 'Users'), users_path
       %ul.nav.navbar-nav.navbar-right
         %li= link_to fa_icon('plus', text: 'Log'), new_entry_path
         %li.dropdown
