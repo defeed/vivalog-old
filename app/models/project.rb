@@ -10,6 +10,8 @@ class Project < ActiveRecord::Base
   scope :not_finalized, -> { where(finalized_at: nil) }
   scope :finalized, -> { where.not(finalized_at: nil) }
 
+  before_save :strip_title, :assign_code
+
   def self.search(query = nil)
     if query
       result = where('title ILIKE ?', "%#{query}%")
@@ -115,9 +117,34 @@ class Project < ActiveRecord::Base
     errors.add(:end_on, 'must end on same day or after start')
   end
 
+  def self.generate_code(title, id)
+    return if title.blank?
+    normalized = title
+                  .to_slug
+                  .normalize(transliterations: [:russian, :latin])
+                  .to_s
+                  .upcase
+    letters = normalized.gsub(/[0-9-]/i, '').slice(0, 4).presence
+    letters ||= ('A'..'Z').to_a.shuffle.take(4).join()
+    numbers = title.gsub(/([0-9])/).to_a.take(2).join('').presence
+    numbers ||= rand(0..9)
+    numbers = "%02d" % numbers
+
+    loop do
+      code = "#{letters}/#{numbers}#{rand(10..90)}"
+      break code if Project.where.not(id: id).where(code: code).none?
+    end
+  end
+
   private
 
   def strip_title
     self.title = title.gsub(/\s+/, ' ').strip
+  end
+
+  def assign_code
+    return unless title.present?
+
+    self.code = Project.generate_code(title, id)
   end
 end
