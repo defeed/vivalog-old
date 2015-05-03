@@ -1,3 +1,5 @@
+- if @project.new_record?
+  %h2 New project
 .well.well-default
   = simple_form_for @project do |form|
     = form.error_notification
