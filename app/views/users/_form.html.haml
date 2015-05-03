@@ -10,7 +10,7 @@
         = form.input :email, label: t('users.attributes.email')
       - if can? :manage, User
         .col-md-4.col-xs-6
-          = form.input :role, collection: roles_for_select, label: t('users.attributes.role'), prompt: 'Choose Role'
+          = form.input :role, collection: roles_for_select, label: t('users.attributes.role'), prompt: t('forms.choose_role')
         .col-md-2.col-xs-6
           = form.input :hourly_rate, label: t('users.attributes.hourly_rate'), placeholder: '€'
     .row
