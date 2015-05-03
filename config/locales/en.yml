@@ -21,10 +21,12 @@ en:
 
   not_finalized_reasons:
     no_entries: it has no entries
-    no_date: date not specified
+    no_start_date: start date not specified
+    no_end_date: start date not specified
     no_volume: volume not specified
     no_price_receive: price (receive) not specified
     no_price_polish: price (polish) not specified
     workers_receive_not_eql: "number of workers for and entries for receiving don't match"
     workers_polish_not_eql: "number of workers for and entries for polishing don't match"
-    date_in_future: work date is in future
+    start_date_in_future: start date is in future
+    start_date_after_end_date: start date is after end date

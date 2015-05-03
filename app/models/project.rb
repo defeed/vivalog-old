@@ -33,6 +33,7 @@ class Project < ActiveRecord::Base
     reasons = []
     reasons.push :no_entries if entries.none?
     reasons.push :no_start_date if start_on.blank?
+    reasons.push :no_end_date if end_on.blank?
     reasons.push :no_volume if volume.blank?
     reasons.push :no_price_receive if price_receive.blank?
     reasons.push :no_price_polish if price_polish.blank?
@@ -43,6 +44,9 @@ class Project < ActiveRecord::Base
       entries.with_type(:polish).count == avg_workers_for(:polish)
     end
     reasons.push :start_date_in_future if start_on && start_on > Date.today
+    reasons.push :start_date_after_end_date if begin
+      start_on && end_on && start_on > end_on
+    end
 
     reasons
   end
