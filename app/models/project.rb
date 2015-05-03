@@ -114,4 +114,10 @@ class Project < ActiveRecord::Base
     errors.add(:start_on, 'must start on same day or before end')
     errors.add(:end_on, 'must end on same day or after start')
   end
+
+  private
+
+  def strip_title
+    self.title = title.gsub(/\s+/, ' ').strip
+  end
 end
