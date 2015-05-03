@@ -1,4 +1,6 @@
 en:
+  hello_username: 'Hello, %{name}'
+
   projects:
     header: Projects
     new_project: New project
@@ -43,7 +45,7 @@ en:
     header: Users
     new_user: New user
     created: User created
-    updated: USer updated
+    updated: User updated
     password_email_sent: 'Password reset link was sent by e-mail'
     my_profile: My profile
     sign_in_header: Login
@@ -53,6 +55,9 @@ en:
     forgot_password: 'Forgot your password?'
     password_reset: Password reset
     send_password_reset: Send password reset link
+    new_password: New password
+    password_confirmation: Password confirmation
+    set_new_password: Set new password
 
     attributes:
       attributes:

@@ -7,6 +7,8 @@ ru:
     formats:
       long: "%Y-%m-%d"
 
+  hello_username: 'Здравствуйте, %{name}'
+
   projects:
     header: Проекты
     new_project: Новый проект
@@ -61,6 +63,9 @@ ru:
     forgot_password: 'Забыли свой пароль?'
     password_reset: Новый пароль
     send_password_reset: 'Послать пароль на е-мейл'
+    new_password: Новый пароль
+    password_confirmation: 'Новый пароль, ещё раз'
+    set_new_password: Установить новый пароль
 
     attributes:
       name: Имя
