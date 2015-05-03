@@ -149,7 +149,7 @@ module ApplicationHelper
   end
 
   def project_dates(project)
-    return unless project.start_on && project.end_on
+    return if [project.start_on, project.end_on].none?
     return moment(project.start_on) unless project.end_on
     return moment(project.start_on) if project.start_on == project.end_on
 
