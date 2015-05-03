@@ -43,9 +43,12 @@ class ProjectsController < ApplicationController
     else
       reasons = result.map do |reason|
         I18n.t("not_finalized_reasons.#{reason}")
-      end.to_sentence
+      end.to_sentence(
+        two_words_connector: t(:two_words_connector),
+        last_word_connector: t(:last_word_connector)
+      )
 
-      flash[:error] = "Project cannot be finalized because #{reasons}"
+      flash[:error] = t('projects.cannot_be_finalized', reasons: reasons)
     end
     redirect_to @project
   end

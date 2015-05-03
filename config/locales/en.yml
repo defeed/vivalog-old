@@ -1,5 +1,7 @@
 en:
   hello_username: 'Hello, %{name}'
+  two_words_connector: ' and '
+  last_word_connector: ', and '
 
   projects:
     header: Projects
@@ -11,6 +13,7 @@ en:
     finalized_label: Finalized
     not_finalized_label: Not finalized
     num_workers: '# workers'
+    cannot_be_finalized: 'Project cannot be finalized because %{reasons}'
 
     attributes:
       title: Title

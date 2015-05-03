@@ -8,6 +8,8 @@ ru:
       long: "%Y-%m-%d"
 
   hello_username: 'Здравствуйте, %{name}'
+  two_words_connector: ' и '
+  last_word_connector: ' и '
 
   projects:
     header: Проекты
@@ -19,6 +21,7 @@ ru:
     finalized_label: Финализирован
     not_finalized_label: Нефинализирован
     num_workers: '# рабочих'
+    cannot_be_finalized: 'Проект не может быть финализирован, потому что %{reasons}'
 
     attributes:
       title: Название
@@ -118,13 +121,13 @@ ru:
     other: Другое
 
   not_finalized_reasons:
-    no_entries: нет записей
+    no_entries: в нём нет записей
     no_start_date: дата начала не указана
     no_end_date: дата окончания не указана
     no_volume: объём не указан
-    no_price_receive: сумма за приёмка не указана
+    no_price_receive: сумма за приёмку не указана
     no_price_polish: сумма за шлифовку не указана
     workers_receive_not_eql: количество рабочих из записей на приёмке не совпадает
     workers_polish_not_eql: количество рабочих и записей на шлифовке не совпатает
-    start_date_in_future: дата начала проекта в будущем
-    start_date_after_end_date: дата начала после даты окончания
+    start_date_in_future: дата начала проекта указана в будущем
+    start_date_after_end_date: дата начала указана после даты окончания
