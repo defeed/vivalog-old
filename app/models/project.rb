@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
 
   def self.search(query = nil)
     if query
-      result = where('title ILIKE ?', "%#{query}%")
+      result = where('title ILIKE ? OR code ILIKE ?', "%#{query}%", "%#{query}%")
     else
       result = all
     end
