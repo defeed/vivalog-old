@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     end
   end
   resources :projects do
+    collection do
+      get :find_by_start_date
+    end
     member do
       patch :finalize
     end

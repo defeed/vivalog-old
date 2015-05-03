@@ -12,6 +12,7 @@ class Ability
     end
 
     if user.worker?
+      can :find_by_start_date, Project
       can :create, Entry
       can [:read, :update], Entry, user_id: user.id
       can [:show_profile, :update], User, id: user.id

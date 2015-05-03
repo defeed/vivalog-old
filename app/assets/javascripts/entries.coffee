@@ -1,4 +1,6 @@
 $ ->
+  projects_select = $('#entry_project_id')
+
   setFieldsVisibility = (work_type) ->
     if work_type == ''
       $('#workers').hide()
@@ -16,6 +18,13 @@ $ ->
       $('#hours').hide()
       $('#hourly-rate').hide()
 
+  loadProjects = (date) ->
+    $.ajax '/projects/find_by_start_date',
+      data: { date: date }
+      success: (data, status, xhr) ->
+        populateProjectsSelect(data)
+      error: (xhr, status, err) ->
+        alert 'Failed to load projects. Refresh page and try again.'
 
   setFieldsVisibility($('#entry_work_type').val())
 
@@ -25,7 +34,18 @@ $ ->
   $('#new_entry').on 'change', '#entry_user_id', (event) ->
     user_id = $(this).val()
     $.ajax '/users/' + user_id + '/hourly_rate',
-      success: (res, status, xhr) ->
-        $('#entry_hourly_rate').val(res)
+      success: (data, status, xhr) ->
+        $('#entry_hourly_rate').val(data)
       error: (xhr, status, err) ->
         $('#entry_hourly_rate').val('')
+
+  $('#new_entry').on 'dp.change', "#entry_worked_on", (event) ->
+    clearProjectsSelect()
+    loadProjects($(this).val())
+
+  clearProjectsSelect = ->
+    projects_select.find('option:not([value=""])').remove()
+  populateProjectsSelect = (projects) ->
+    $.each projects, () ->
+      title = '[' + this.code + '] ' + this.title
+      projects_select.append($("<option />").val(this.id).text(title))

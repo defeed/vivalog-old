@@ -49,6 +49,12 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  def find_by_start_date
+    render json: Project.not_finalized
+                        .by_start_date(params[:date])
+                        .select(:id, :code, :title)
+  end
+
   private
 
   def project_params

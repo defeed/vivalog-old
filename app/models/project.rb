@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
 
   scope :not_finalized, -> { where(finalized_at: nil) }
   scope :finalized, -> { where.not(finalized_at: nil) }
+  scope :by_start_date, ->(date) {
+    date = date.to_date
+    Project.where('start_on <= ?', date)
+  }
 
   before_save :strip_title, :assign_code
 
