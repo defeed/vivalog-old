@@ -1,7 +1,32 @@
 en:
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            title:
+              blank: cannot be blank
+        entry:
+          attributes:
+            project_id:
+              blank: cannot be blank
+            worked_on:
+              blank: cannot be blank
+            work_type:
+              blank: cannot be blank
+            hours:
+              blank: cannot be blank
+            hourly_rate:
+              blank: cannot be blank
+            workers:
+              blank: cannot be blank
+            coefficient:
+              blank: cannot be blank
+
   hello_username: 'Hello, %{name}'
   two_words_connector: ' and '
   last_word_connector: ', and '
+
 
   projects:
     header: Projects

@@ -7,6 +7,30 @@ ru:
     formats:
       long: "%Y-%m-%d"
 
+  activerecord:
+    errors:
+      models:
+        project:
+          attributes:
+            title:
+              blank: нужно указать
+        entry:
+          attributes:
+            project_id:
+              blank: нужно указать
+            worked_on:
+              blank: нужно указать
+            work_type:
+              blank: нужно указать
+            hours:
+              blank: нужно указать
+            hourly_rate:
+              blank: нужно указать
+            workers:
+              blank: нужно указать
+            coefficient:
+              blank: нужно указать
+
   hello_username: 'Здравствуйте, %{name}'
   two_words_connector: ' и '
   last_word_connector: ' и '
