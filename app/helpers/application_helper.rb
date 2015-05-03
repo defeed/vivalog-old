@@ -81,13 +81,13 @@ module ApplicationHelper
     )
   end
 
-  def project_finalized_label(finalized)
+  def project_finalized_label(finalized, show_text: true)
     if finalized
-      string = I18n.t('projects.finalized_label')
+      string = show_text ? I18n.t('projects.finalized_label') : nil
       content = fa_icon('check-square-o', text: string)
       label_class = 'success'
     else
-      string = I18n.t('projects.not_finalized_label')
+      string = show_text ? I18n.t('projects.not_finalized_label') : nil
       content = fa_icon('square-o', text: string)
       label_class = 'default'
     end

@@ -6,20 +6,16 @@
   %table.table.table-bordered.table-striped
     %thead
       %tr
+        %th
         %th= t('projects.attributes.title')
         %th= t('projects.attributes.volume')
-        %th= t('projects.attributes.price_receive')
-        %th= t('projects.attributes.price_polish')
-        %th= t('projects.attributes.hourly_rate')
         %th= t('projects.attributes.date')
     %tbody
       - @projects.each do |project|
         %tr
+          %td.text-center= project_finalized_label(project.finalized?, show_text: false)
           %td
             = project_code_label(project.code)
             = link_to project.title, project_path(project)
           %td= volume(project.volume)
-          %td= eur(project.price_receive)
-          %td= eur(project.price_polish)
-          %td= eur(project.hourly_rate)
           %td= project_dates(project)
