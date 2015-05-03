@@ -14,6 +14,14 @@ ru:
           attributes:
             title:
               blank: нужно указать
+        user:
+          attributes:
+            name:
+              blank: нужно указать
+            email:
+              blank: нужно указать
+            role:
+              blank: нужно указать
         entry:
           attributes:
             project_id:

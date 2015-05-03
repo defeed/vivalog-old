@@ -6,6 +6,14 @@ en:
           attributes:
             title:
               blank: cannot be blank
+        user:
+          attributes:
+            name:
+              blank: cannot be blank
+            email:
+              blank: cannot be blank
+            role:
+              blank: cannot be blank
         entry:
           attributes:
             project_id:
