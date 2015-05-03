@@ -40,6 +40,7 @@ GEM
     autoprefixer-rails (5.1.8)
       execjs
       json
+    babosa (1.0.2)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -186,6 +187,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  babosa
   binding_of_caller
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.7.14)
