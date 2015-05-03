@@ -46,12 +46,19 @@ en:
     updated: USer updated
     password_email_sent: 'Password reset link was sent by e-mail'
     my_profile: My profile
+    sign_in_header: Login
+    sign_up_header: Sign up
+    sign_in: Log in
     sign_out: Log out
+    forgot_password: 'Forgot your password?'
+    password_reset: Password reset
+    send_password_reset: Send password reset link
 
     attributes:
       attributes:
         name: Name
         email: 'E-mail'
+        password: Password
         role: Role
         status: Status
         hourly_rate: Hourly rate

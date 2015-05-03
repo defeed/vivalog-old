@@ -54,11 +54,18 @@ ru:
     updated: Данные пользователя обновлены
     password_email_sent: 'Ссылка на смену пароля выслана на е-мейл'
     my_profile: Мой профиль
+    sign_in_header: Вход
+    sign_up_header: Регистрация
+    sign_in: Войти
     sign_out: Выйти
+    forgot_password: 'Забыли свой пароль?'
+    password_reset: Новый пароль
+    send_password_reset: 'Послать пароль на е-мейл'
 
     attributes:
       name: Имя
       email: 'Е-мейл'
+      password: Пароль
       role: Роль
       status: Статус
       hourly_rate: Часовая ставка

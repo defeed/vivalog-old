@@ -1,13 +1,13 @@
 .row
   .col-md-4.col-md-offset-4
     .well.well-default
-      %h3 Sign in
+      %h3= t('users.sign_in_header')
 
       = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .form-inputs
-          = f.input :email, required: true, autofocus: true
-          = f.input :password, required: true
+          = f.input :email, required: true, autofocus: true, label: t('users.attributes.email')
+          = f.input :password, required: true, label: t('users.attributes.password')
 
         .form-actions
-          = f.button :submit, 'Sign in', class: 'btn btn-primary btn-block'
+          = f.button :submit, t('users.sign_in'), class: 'btn btn-primary btn-block'
           = render 'devise/shared/links'
