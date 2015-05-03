@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   validates_presence_of :title
+  validate :ensure_correct_dates
 
   has_many :entries, dependent: :destroy
   has_many :workers, -> { uniq }, source: :user, through: :entries
@@ -103,5 +104,14 @@ class Project < ActiveRecord::Base
 
   def finalized?
     !!finalized_at
+  end
+
+  def ensure_correct_dates
+    return true unless start_on && end_on
+    return true unless end_on
+    return true if end_on >= start_on
+
+    errors.add(:start_on, 'must start on same day or before end')
+    errors.add(:end_on, 'must end on same day or after start')
   end
 end
