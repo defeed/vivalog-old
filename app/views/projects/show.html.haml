@@ -1,9 +1,8 @@
 %h1.page-header
   = @project.title
-  - if @project.date
-    %small= moment(@project.date)
 
 %p
+  = project_dates_label(@project)
   = project_finalized_label(@project.finalized?)
   = metadata_label
 

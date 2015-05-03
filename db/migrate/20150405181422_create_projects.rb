@@ -6,7 +6,8 @@ class CreateProjects < ActiveRecord::Migration
       t.decimal :price_receive
       t.decimal :price_polish
       t.decimal :hourly_rate
-      t.date :date
+      t.date :start_on
+      t.date :end_on
 
       t.timestamps null: false
     end

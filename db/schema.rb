@@ -49,7 +49,8 @@ ActiveRecord::Schema.define(version: 20150501172443) do
     t.decimal  "price_receive"
     t.decimal  "price_polish"
     t.decimal  "hourly_rate"
-    t.date     "date"
+    t.date     "start_on"
+    t.date     "end_on"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.datetime "finalized_at"

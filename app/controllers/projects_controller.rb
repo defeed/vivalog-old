@@ -56,7 +56,8 @@ class ProjectsController < ApplicationController
       .require(:project)
       .permit(
         :title,
-        :date,
+        :start_on,
+        :end_on,
         :volume,
         :price_receive,
         :price_polish,

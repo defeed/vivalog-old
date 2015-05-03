@@ -147,4 +147,20 @@ module ApplicationHelper
       separator: ','
     )
   end
+
+  def project_dates(project)
+    return unless project.start_on && project.end_on
+    return moment(project.start_on) unless project.end_on
+    return moment(project.start_on) if project.start_on == project.end_on
+
+    "#{moment(project.start_on)} &mdash; #{moment(project.end_on)}".html_safe
+  end
+
+  def project_dates_label(project)
+    content_tag(
+      :span,
+      fa_icon('calendar', text: project_dates(project)),
+      class: 'label label-primary',
+    )
+  end
 end

@@ -17,7 +17,7 @@ $ ->
   formatDates = (dates) ->
     dates.each ->
       rawDate = $(this).attr('datetime')
-      formattedDate = moment(rawDate).format("dd, LL")
+      formattedDate = moment(rawDate).format("ll")
       $(this).text(formattedDate)
 
   formatTimestamps = (timestamps) ->

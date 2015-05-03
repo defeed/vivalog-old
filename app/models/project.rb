@@ -16,7 +16,7 @@ class Project < ActiveRecord::Base
       result = all
     end
 
-    result.order(date: :desc)
+    result.order(start_on: :desc)
   end
 
   def avg_workers_for(work_type)
@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
   def not_finalized_reasons
     reasons = []
     reasons.push :no_entries if entries.none?
-    reasons.push :no_date if date.blank?
+    reasons.push :no_start_date if start_on.blank?
     reasons.push :no_volume if volume.blank?
     reasons.push :no_price_receive if price_receive.blank?
     reasons.push :no_price_polish if price_polish.blank?
@@ -42,7 +42,7 @@ class Project < ActiveRecord::Base
     reasons.push :workers_polish_not_eql unless begin
       entries.with_type(:polish).count == avg_workers_for(:polish)
     end
-    reasons.push :date_in_future if date && date > Date.today
+    reasons.push :start_date_in_future if start_on && start_on > Date.today
 
     reasons
   end
