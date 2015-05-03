@@ -15,7 +15,9 @@
     %tbody
       - @projects.each do |project|
         %tr
-          %td= link_to project.title, project_path(project)
+          %td
+            = project_code_label(project.code)
+            = link_to project.title, project_path(project)
           %td= volume(project.volume)
           %td= eur(project.price_receive)
           %td= eur(project.price_polish)

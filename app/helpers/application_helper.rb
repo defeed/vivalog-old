@@ -72,6 +72,15 @@ module ApplicationHelper
     )
   end
 
+  def project_code_label(code)
+    return if code.blank?
+    content_tag(
+      :span,
+      code,
+      class: 'label label-primary project-code',
+    )
+  end
+
   def project_finalized_label(finalized)
     if finalized
       string = I18n.t(:project_finalized)
@@ -157,6 +166,7 @@ module ApplicationHelper
   end
 
   def project_dates_label(project)
+    return if [project.start_on, project.end_on].none?
     content_tag(
       :span,
       fa_icon('calendar', text: project_dates(project)),
