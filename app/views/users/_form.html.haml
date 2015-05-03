@@ -1,24 +1,24 @@
 - if @user.new_record?
-  %h2 New user
+  %h2= t('users.new_user')
 .well.well-default
   = simple_form_for @user do |form|
     = form.error_notification
     .row
       .col-md-3.col-xs-12
-        = form.input :name, placeholder: 'Name'
+        = form.input :name, label: t('users.attributes.name')
       .col-md-3.col-xs-12
-        = form.input :email, placeholder: 'E-mail'
+        = form.input :email, label: t('users.attributes.email')
       - if can? :manage, User
         .col-md-4.col-xs-6
-          = form.input :role, collection: roles_for_select, prompt: 'Choose Role'
+          = form.input :role, collection: roles_for_select, label: t('users.attributes.role'), prompt: 'Choose Role'
         .col-md-2.col-xs-6
-          = form.input :hourly_rate, placeholder: '€'
+          = form.input :hourly_rate, label: t('users.attributes.hourly_rate'), placeholder: '€'
     .row
       .col-md-12
         - if @user.persisted?
-          = form.submit 'Save', class: 'btn btn-primary'
+          = form.submit t('forms.save'), class: 'btn btn-primary'
           - if can? :manage, User
             = activate_button(@user)
-          = link_to fa_icon('send-o', text: 'New password'), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: 'Are you sure?' }
+          = link_to fa_icon('send-o', text: t('forms.send_new_password')), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: t('forms.are_you_sure') }
         - else
-          = form.submit 'Create', class: 'btn btn-primary'
+          = form.submit t('forms.create'), class: 'btn btn-primary'

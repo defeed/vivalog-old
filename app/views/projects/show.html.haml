@@ -15,16 +15,16 @@
   - if @project.entries.any?
     = render 'entries'
   - else
-    %h2 No entries
+    %h2= t('entries.no_entries')
 
 .metadata-content
   %dl.dl-horizontal.small
-    %dt Created
+    %dt= t('info.created')
     %dd
       = fa_icon('calendar')
       = moment(@project.created_at, true)
     - if @project.finalized?
-      %dt Finalized
+      %dt= t('projects.finalized_label')
       %dd
         = fa_icon('calendar')
         = moment(@project.finalized_at, true)

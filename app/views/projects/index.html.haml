@@ -1,4 +1,4 @@
-%h1.page-header Projects
+%h1.page-header= t('projects.header')
 
 = render 'form'
 
@@ -6,12 +6,12 @@
   %table.table.table-bordered.table-striped
     %thead
       %tr
-        %th Title
-        %th Volume
-        %th Receive
-        %th Polish
-        %th Hourly rate
-        %th Date
+        %th= t('projects.attributes.title')
+        %th= t('projects.attributes.volume')
+        %th= t('projects.attributes.price_receive')
+        %th= t('projects.attributes.price_polish')
+        %th= t('projects.attributes.hourly_rate')
+        %th= t('projects.attributes.date')
     %tbody
       - @projects.each do |project|
         %tr

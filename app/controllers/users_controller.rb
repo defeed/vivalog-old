@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:notice] = 'User details updated'
+      flash[:notice] = t('users.updated')
       redirect_to can?(:manage, User) ? @user : profile_path
     else
       render can?(:manage, User) ? :show : show_profile
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params.merge(password: SecureRandom.hex))
     if @user.save
-      redirect_to @user, notice: 'User created'
+      redirect_to @user, notice: t('users.created')
     else
       @users = User.order(created_at: :asc)
       render :index
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def reset_password
     @user.send_reset_password_instructions
-    redirect_to users_path, notice: 'Password reset e-mail was sent to user'
+    redirect_to users_path, notice: t('users.password_email_sent')
   end
 
   def toggle_active

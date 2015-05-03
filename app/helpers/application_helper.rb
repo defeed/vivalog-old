@@ -83,11 +83,11 @@ module ApplicationHelper
 
   def project_finalized_label(finalized)
     if finalized
-      string = I18n.t(:project_finalized)
+      string = I18n.t('projects.finalized_label')
       content = fa_icon('check-square-o', text: string)
       label_class = 'success'
     else
-      string = I18n.t(:project_not_finalized)
+      string = I18n.t('projects.not_finalized_label')
       content = fa_icon('square-o', text: string)
       label_class = 'default'
     end
@@ -135,7 +135,7 @@ module ApplicationHelper
       :span,
       fa_icon('info-circle'),
       class: 'label label-default metadata-popover',
-      title: 'Information'
+      title: t('info.title')
     )
   end
 

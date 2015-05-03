@@ -1,4 +1,86 @@
 en:
+  projects:
+    header: Projects
+    new_project: New project
+    created: Project created
+    updated: Project updated
+    deleted: 'Project %{title} deleted'
+    finalized: Project finalized
+    finalized_label: Finalized
+    not_finalized_label: Not finalized
+    num_workers: '# workers'
+
+    attributes:
+      title: Title
+      start_on: Start date
+      end_on: End date
+      volume: Volume
+      price_receive: Price (receive)
+      price_polish: Price (polish)
+      hourly_rate: Hourly rate
+      date: Date
+
+  entries:
+    no_entries: No entries
+    plus: Log
+    header: Entries
+    new_entry: New entry
+    created: Entry created
+    deleted: Entry deleted
+
+    attributes:
+      user: Worker
+      worked_on: Date
+      project: Project
+      work_type: Work type
+      comment: Comment
+      num_workers: '# workers'
+      coefficient: Coefficient
+      num_hours: '# hours'
+      hourly_rate: Hourly rate
+
+  users:
+    header: Users
+    new_user: New user
+    created: User created
+    updated: USer updated
+    password_email_sent: 'Password reset link was sent by e-mail'
+    my_profile: My profile
+    sign_out: Log out
+
+    attributes:
+      attributes:
+        name: Name
+        email: 'E-mail'
+        role: Role
+        status: Status
+        hourly_rate: Hourly rate
+
+  payouts:
+    title: Payouts
+    payment: Payment
+    amount: Amount
+
+  forms:
+    create: Create
+    save: Save
+    send_new_password: New password
+    are_you_sure: 'Are you sure?'
+    choose_role: Choose role
+    choose_project: Choose project
+    choose_work_type: Choose work type
+    finalize: Finalize
+    delete: Delete
+
+  dashboard:
+    title: Dashboard
+
+  info:
+    title: Information
+    created: Created
+    registered: Registered
+    password_sent: Password sent
+
   roles:
     administrator: Administrator
     manager: Manager
@@ -15,9 +97,6 @@ en:
     receive: Receiving
     polish: Polishing
     other: Other
-
-  project_finalized: Finalized
-  project_not_finalized: Not finalized
 
   not_finalized_reasons:
     no_entries: it has no entries

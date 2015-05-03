@@ -2,22 +2,22 @@
   .row
     .col-sm-4
       %dl.dl-horizontal
-        %dt Volume
+        %dt= t('projects.attributes.volume')
         %dd= volume(@project.volume)
     .col-sm-4
       %dl.dl-horizontal
-        %dt Workers
+        %dt= t('projects.num_workers')
         %dd= @project.workers.count
   .row
     .col-sm-4
       %dl.dl-horizontal
-        %dt Price (receive)
+        %dt= t('projects.attributes.price_receive')
         %dd= eur(@project.price_receive)
     .col-sm-4
       %dl.dl-horizontal
-        %dt Price (polish)
+        %dt= t('projects.attributes.price_polish')
         %dd= eur(@project.price_polish)
     .col-sm-4
       %dl.dl-horizontal
-        %dt Hourly rate
+        %dt= t('projects.attributes.hourly_rate')
         %dd= eur(@project.hourly_rate)

@@ -10,19 +10,19 @@
       - if can? :manage, Project
         = form_tag projects_path, class: 'navbar-form navbar-left', method: :get do
           .form-group
-            = text_field_tag :query, params[:query], class: 'form-control', placeholder: 'Projects'
+            = text_field_tag :query, params[:query], class: 'form-control', placeholder: t('projects.header')
           = button_tag fa_icon('search'), class: 'btn btn-default', type: 'button'
       %ul.nav.navbar-nav
         - if can? :manage, Project
-          %li= link_to fa_icon('building-o', text: 'Projects'), projects_path
+          %li= link_to fa_icon('building-o', text: t('projects.header')), projects_path
         - if can? :manage, User
-          %li= link_to fa_icon('users', text: 'Users'), users_path
+          %li= link_to fa_icon('users', text: t('users.header')), users_path
       %ul.nav.navbar-nav.navbar-right
-        %li= link_to fa_icon('plus', text: 'Log'), new_entry_path
+        %li= link_to fa_icon('plus', text: t('entries.plus')), new_entry_path
         %li.dropdown
           %a.dropdown-toggle{ href: '#', data: { toggle: 'dropdown' } }
             = current_user
             %span.caret
           %ul.dropdown-menu
-            %li= link_to fa_icon('user', text: 'My profile'), profile_path
-            %li= link_to fa_icon('sign-out', text: 'Sign out'), destroy_user_session_path, method: :delete
+            %li= link_to fa_icon('user', text: t('users.my_profile')), profile_path
+            %li= link_to fa_icon('sign-out', text: t('users.sign_out')), destroy_user_session_path, method: :delete

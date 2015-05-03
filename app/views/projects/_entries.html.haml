@@ -1,13 +1,13 @@
-%h2 Entries
+%h2= t('entries.header')
 .table-responsive
   %table.table.bordered
     %thead
       %tr
-        %th Name
-        %th Work date
-        %th Work
-        %th Workers
-        %th Coeff
+        %th= t('entries.attributes.user')
+        %th= t('entries.attributes.worked_on')
+        %th= t('entries.attributes.work_type')
+        %th= t('entries.attributes.num_workers')
+        %th= t('entries.attributes.coefficient')
         %th
     %tbody
       - @project.entries.each do |entry|
@@ -17,4 +17,4 @@
           %td= I18n.t("work_types.#{entry.work_type}")
           %td= entry.workers
           %td= coeff(entry.coefficient)
-          %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger'
+          %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-xs btn-danger'

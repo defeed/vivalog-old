@@ -1,4 +1,4 @@
-%h1.page-header Users
+%h1.page-header= t('users.header')
 
 - if can? :create, User
   = render 'form'
@@ -7,10 +7,10 @@
   %table.table.table-bordered.table-striped
     %thead
       %tr
-        %th Name
-        %th Email
-        %th Role
-        %th Status
+        %th= t('users.attributes.name')
+        %th= t('users.attributes.email')
+        %th= t('users.attributes.role')
+        %th= t('users.attributes.status')
     %tbody
       - @users.each do |user|
         %tr

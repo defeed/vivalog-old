@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, notice: 'Project created'
+      redirect_to @project, notice: t('projects.created')
     else
       @projects = Project.search
       render :index
@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project details updated'
+      redirect_to @project, notice: t('projects.updated')
     else
       render :show
     end
@@ -30,7 +30,8 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-      redirect_to projects_path, notice: "Project #{@project.title} deleted"
+      redirect_to projects_path,
+                  notice: t('projects.deleted', title: @project.title)
     end
   end
 
@@ -38,7 +39,7 @@ class ProjectsController < ApplicationController
     result = @project.finalize(current_user)
 
     if result == true
-      flash[:notice] = 'Project has been finalized'
+      flash[:notice] = t('projects.finalized')
     else
       reasons = result.map do |reason|
         I18n.t("not_finalized_reasons.#{reason}")

@@ -9,12 +9,12 @@
 
 .metadata-content
   %dl.dl-horizontal.small
-    %dt Registered
+    %dt= t('info.registered')
     %dd
       = fa_icon('calendar')
       = moment(@user.created_at, true)
     - if @user.reset_password_sent_at
-      %dt Password sent
+      %dt= t('info.password_sent')
       %dd
         = fa_icon('calendar')
         = moment(@user.reset_password_sent_at, true)

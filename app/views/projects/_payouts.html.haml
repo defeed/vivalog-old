@@ -1,13 +1,13 @@
-%h2 Payouts
+%h2= t('payouts.title')
 .table-responsive
   %table.table.bordered
     %thead
       %tr
-        %th Name
-        %th Work date
-        %th Work
-        %th Payment
-        %th Amount
+        %th= t('entries.attributes.user')
+        %th= t('entries.attributes.worked_on')
+        %th= t('entries.attributes.work_type')
+        %th= t('payouts.payment')
+        %th= t('payouts.amount')
     %tbody
       - @project.entries.each do |entry|
         %tr

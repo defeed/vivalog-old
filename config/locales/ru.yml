@@ -1,0 +1,118 @@
+ru:
+  time:
+     formats:
+       long: "%Y-%m-%d"
+
+  date:
+    formats:
+      long: "%Y-%m-%d"
+
+  projects:
+    header: Проекты
+    new_project: Новый проект
+    created: Проект создан
+    updated: Данные проекта обновлены
+    deleted: 'Проект %{title} удалён'
+    finalized: Проект финализирован
+    finalized_label: Финализирован
+    not_finalized_label: Нефинализирован
+    num_workers: '# рабочих'
+
+    attributes:
+      title: Название
+      start_on: Дата начала
+      end_on: Дата окончания
+      volume: Объём
+      price_receive: Цена (приёмка)
+      price_polish: Цена (шлифовка)
+      hourly_rate: Часовая ставка
+      date: Дата
+
+  entries:
+    no_entries: Нет записей
+    plus: Запись
+    header: Записи
+    new_entry: Новая запись
+    created: Запись создана
+    deleted: Запись удалена
+
+    attributes:
+      user: Рабочий
+      worked_on: Дата
+      project: Проект
+      work_type: Тип работы
+      comment: Комментарий
+      num_workers: '# рабочих'
+      coefficient: 'Коэфф.'
+      num_hours: '# часов'
+      hourly_rate: Часовая ставка
+
+  users:
+    header: Пользователи
+    new_user: Новый пользователь
+    created: Пользователь создан
+    updated: Данные пользователя обновлены
+    password_email_sent: 'Ссылка на смену пароля выслана на е-мейл'
+    my_profile: Мой профиль
+    sign_out: Выйти
+
+    attributes:
+      name: Имя
+      email: 'Е-мейл'
+      role: Роль
+      status: Статус
+      hourly_rate: Часовая ставка
+
+  payouts:
+    title: Выплаты
+    payment: Расчёт
+    amount: Сумма
+
+  forms:
+    create: Создать
+    save: Сохранить
+    send_new_password: Новый пароль
+    are_you_sure: 'Вы уверены?'
+    choose_role: Выберите роль
+    choose_project: Выберите проект
+    choose_work_type: Выберите тип работы
+    finalize: Финализировать
+    delete: Удалить
+
+  dashboard:
+    title: Панель управления
+
+  info:
+    title: Информация
+    created: Создан
+    registered: Зарегистрирован
+    password_sent: Пароль выслан
+
+  roles:
+    administrator: Администратор
+    manager: Босс
+    accountant: Бухгалтер
+    worker: Рабочий
+
+  statuses:
+    active: Активный
+    inactive: Неактивный
+    activate: Активировать
+    deactivate: Деактивировтаь
+
+  work_types:
+    receive: Приёмка
+    polish: Шлифовка
+    other: Другое
+
+  not_finalized_reasons:
+    no_entries: нет записей
+    no_start_date: дата начала не указана
+    no_end_date: дата окончания не указана
+    no_volume: объём не указан
+    no_price_receive: сумма за приёмка не указана
+    no_price_polish: сумма за шлифовку не указана
+    workers_receive_not_eql: количество рабочих из записей на приёмке не совпадает
+    workers_polish_not_eql: количество рабочих и записей на шлифовке не совпатает
+    start_date_in_future: дата начала проекта в будущем
+    start_date_after_end_date: дата начала после даты окончания
