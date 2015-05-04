@@ -81,21 +81,27 @@ module ApplicationHelper
     )
   end
 
-  def project_finalized_label(finalized, show_text: true)
+  def project_finalized_label(finalized, show_text: false, show_tooltip: false)
     if finalized
-      string = show_text ? I18n.t('projects.finalized_label') : nil
-      content = fa_icon('check-square-o', text: string)
+      text = t('projects.finalized_label')
+      icon = 'check-square-o'
       label_class = 'success'
     else
-      string = show_text ? I18n.t('projects.not_finalized_label') : nil
-      content = fa_icon('square-o', text: string)
+      text = t('projects.not_finalized_label')
+      icon = 'square-o'
       label_class = 'default'
     end
+
+    string = show_text ? text : nil
+    title = show_tooltip ? text : nil
+    content = fa_icon(icon, text: string)
 
     content_tag(
       :span,
       content,
-      class: "label label-#{label_class}"
+      class: "label label-#{label_class}",
+      data: { toggle: 'tooltip', placement: 'right' },
+      title: title
     )
   end
 

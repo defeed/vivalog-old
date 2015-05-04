@@ -4,7 +4,7 @@
 
 %p
   = project_dates_label(@project)
-  = project_finalized_label(@project.finalized?)
+  = project_finalized_label(@project.finalized?, show_text: true)
   = metadata_label
 
 - if @project.finalized?

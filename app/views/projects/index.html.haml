@@ -13,7 +13,8 @@
     %tbody
       - @projects.each do |project|
         %tr
-          %td.text-center= project_finalized_label(project.finalized?, show_text: false)
+          %td.text-center
+            = project_finalized_label(project.finalized?, show_tooltip: true)
           %td
             = project_code_label(project.code)
             = link_to project.title, project_path(project)

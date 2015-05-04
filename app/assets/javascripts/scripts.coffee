@@ -14,6 +14,8 @@ $ ->
       return $('.metadata-content').html()
   })
 
+  $('[data-toggle="tooltip"]').tooltip()
+
   formatDates = (dates) ->
     dates.each ->
       rawDate = $(this).attr('datetime')
