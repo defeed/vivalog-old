@@ -11,6 +11,43 @@ $ ->
     else
       $('#billing-types').hide()
 
+  toggleWorkersCoefficient = (show) ->
+    if show
+      $('#workers').show()
+      $('#coefficient').show()
+    else
+      $('#workers').hide()
+      $('#coefficient').hide()
+
+  toggleHourlyRate = (show) ->
+    if show
+      $('#hours').show()
+      $('#hourly-rate').show()
+    else
+      $('#hours').hide()
+      $('#hourly-rate').hide()
+
+  toggleDailyRate = (show) ->
+    if show
+      $('#daily-rate').show()
+    else
+      $('#daily-rate').hide()
+
+  toggleProjectRate = (show) ->
+    if show
+      $('#project-rate').show()
+    else
+      $('#project-rate').hide()
+
+  show_workers_coeff = $('#entry_work_type_receive').is(':checked') || $('#entry_work_type_polish').is(':checked')
+  toggleWorkersCoefficient(show_workers_coeff)
+
+  show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
+  toggleHourlyRate(show_hourly_rate)
+
+  show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
+  toggleDailyRate(show_daily_rate)
+
   show_final_date = $('#entry_multiple_days').is(':checked')
   toggleFinalDate(show_final_date)
 
@@ -23,26 +60,27 @@ $ ->
 
   $('#work-types').change ->
     show_billing_types = $('#entry_work_type_other').is(':checked')
+    show_workers_coeff = $('#entry_work_type_receive').is(':checked') || $('#entry_work_type_polish').is(':checked')
+    show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
+    show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
+    show_project_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_project_rate').is(':checked')
     toggleBillingTypes(show_billing_types)
+    toggleWorkersCoefficient(show_workers_coeff)
+    toggleHourlyRate(show_hourly_rate)
+    toggleDailyRate(show_daily_rate)
+    toggleProjectRate(show_project_rate)
+
+  $('#billing-types').change ->
+    show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
+    show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
+    show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
+    show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
+    show_project_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_project_rate').is(':checked')
+    toggleHourlyRate(show_hourly_rate)
+    toggleDailyRate(show_daily_rate)
+    toggleProjectRate(show_project_rate)
 
   projects_select = $('#entry_project_id')
-
-  setFieldsVisibility = (work_type) ->
-    if work_type == ''
-      $('#workers').hide()
-      $('#coefficient').hide()
-      $('#hours').hide()
-      $('#hourly-rate').hide()
-    else if work_type == 'other'
-      $('#workers').hide()
-      $('#coefficient').hide()
-      $('#hours').show()
-      $('#hourly-rate').show()
-    else
-      $('#workers').show()
-      $('#coefficient').show()
-      $('#hours').hide()
-      $('#hourly-rate').hide()
 
   loadProjects = (date) ->
     $.ajax '/projects/find_by_start_date',
@@ -51,11 +89,6 @@ $ ->
         populateProjectsSelect(data)
       error: (xhr, status, err) ->
         alert 'Failed to load projects. Refresh page and try again.'
-
-  setFieldsVisibility($('#entry_work_type').val())
-
-  $('#new_entry').on 'change', '#entry_work_type', (event) ->
-    setFieldsVisibility($(this).val())
 
   $('#new_entry').on 'change', '#entry_user_id', (event) ->
     user_id = $(this).val()

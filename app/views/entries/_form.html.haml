@@ -26,10 +26,10 @@
             = form.input :workers, label: t('entries.attributes.num_workers')
           .col-xs-6#coefficient
             = form.input :coefficient, label: t('entries.attributes.coefficient')
-          .col-xs-6#hours
-            = form.input :hours, label: t('entries.attributes.num_hours')
           .col-xs-6#hourly-rate
             = form.input :hourly_rate, input_html: { value: current_user.hourly_rate }, label: t('entries.attributes.hourly_rate')
+          .col-xs-6#hours
+            = form.input :hours, label: t('entries.attributes.num_hours')
           .col-xs-6#daily-rate
             = form.input :daily_rate, label: t('entries.attributes.daily_rate')
           .col-xs-6#project-rate
