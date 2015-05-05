@@ -1,4 +1,17 @@
 $ ->
+  toggleFinalDate = (show) ->
+    if show
+      $('#final-date').show()
+    else
+      $('#final-date').hide()
+
+  show_final_date = $('#entry_multiple_days').is(':checked')
+  toggleFinalDate(show_final_date)
+
+  $('#entry_multiple_days').change ->
+    show_final_date = $(this).is(':checked')
+    toggleFinalDate(show_final_date)
+
   projects_select = $('#entry_project_id')
 
   setFieldsVisibility = (work_type) ->
