@@ -7,6 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.decimal :coefficient
       t.integer :workers
       t.string :work_type, null: false
+      t.string :billing_type
       t.decimal :hours
       t.decimal :hourly_rate
       t.decimal :daily_rate
