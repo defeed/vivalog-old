@@ -85,6 +85,9 @@ ru:
       coefficient: 'Коэфф.'
       num_hours: '# часов'
       hourly_rate: Часовая ставка
+      daily_rate: Дневная ставка
+      project_rate: Проектная ставка
+
 
   users:
     header: Пользователи
@@ -152,7 +155,11 @@ ru:
   work_types:
     receive: Приёмка
     polish: Шлифовка
-    other: Другое
+    other: Другая работа
+  billing_types:
+    fixed_hourly: Почасовая оплата
+    fixed_daily: Дневная оплата
+    fixed_project: Оплата за весь проект
 
   not_finalized_reasons:
     no_entries: в нём нет записей

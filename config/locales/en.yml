@@ -56,6 +56,8 @@ en:
       price_receive: Price (receive)
       price_polish: Price (polish)
       hourly_rate: Hourly rate
+      daily_rate: Daily rate
+      project_rate: Project rate
       date: Date
 
   entries:
@@ -144,7 +146,12 @@ en:
   work_types:
     receive: Receiving
     polish: Polishing
-    other: Other
+    other: Other work
+
+  billing_types:
+    fixed_hourly: Hourly rate
+    fixed_daily: Daily rate
+    fixed_project: Project rate
 
   not_finalized_reasons:
     no_entries: it has no entries
