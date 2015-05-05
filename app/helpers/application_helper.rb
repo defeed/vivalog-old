@@ -28,6 +28,15 @@ module ApplicationHelper
     hash
   end
 
+  def billing_types_for_select
+    hash = {}
+    Entry::BILLING_TYPES.each do |type|
+      hash[I18n.t("billing_types.#{type}")] = type
+    end
+
+    hash
+  end
+
   def status_label(is_active)
     if is_active
       string = I18n.t('statuses.active')
