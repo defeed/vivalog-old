@@ -7,10 +7,10 @@ class Entry < ActiveRecord::Base
   has_one :payout
 
   validates :user_id, :project_id, :worked_on, :work_type, presence: true
-  validates :coefficient, :workers,
-            presence: true, unless: :type_other?
-  validates :hours, :hourly_rate,
-            presence: true, if: :type_other?
+  validates :coefficient, :workers, presence: true, unless: :work_type_other?
+  validates :hours, :hourly_rate, presence: true, if: :billed_hourly?
+  validates :daily_rate, presence: true, if: :billed_daily?
+  validates :project_rate, presence: true, if: :billed_daily?
 
   WORK_TYPES = %i( receive polish other )
   BILLING_TYPES  = %i( hourly_rate daily_rate project_rate )
