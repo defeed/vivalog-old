@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
   validates :coefficient, :workers, presence: true, unless: :work_type_other?
   validates :hours, :hourly_rate, presence: true, if: :billed_hourly?
   validates :daily_rate, presence: true, if: :billed_daily?
-  validates :project_rate, presence: true, if: :billed_daily?
+  validates :project_rate, presence: true, if: :billed_by_project?
 
   WORK_TYPES = %i( receive polish other )
   BILLING_TYPES  = %i( hourly_rate daily_rate project_rate )
@@ -25,6 +25,14 @@ class Entry < ActiveRecord::Base
 
   def billed_hourly?
     billing_type == 'hourly_rate'
+  end
+
+  def billed_daily?
+    billing_type == 'daily_rate'
+  end
+
+  def billed_by_project?
+    billing_type == 'project_rate'
   end
 
   def remove_workers_and_coefficient
