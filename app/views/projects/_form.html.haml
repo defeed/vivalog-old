@@ -30,10 +30,12 @@
             = form.input :daily_rate, label: t('projects.attributes.daily_rate')
             = form.input :project_rate, label: t('projects.attributes.project_rate')
     .row
-      .col-md-12
+      .col-sm-6
         - if @project.persisted?
           = form.submit t('forms.save'), class: 'btn btn-primary'
           = link_to fa_icon('check-square-o', text: t('forms.finalize')), finalize_project_path(@project), class: 'btn btn-success', method: :patch
-          = link_to fa_icon('trash-o', text: t('forms.delete')), project_path(@project), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-danger'
         - else
           = form.submit t('forms.create'), class: 'btn btn-primary'
+      .col-sm-6
+        - if @project.persisted?
+          = link_to fa_icon('trash-o', text: t('forms.delete')), project_path(@project), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-danger pull-right'
