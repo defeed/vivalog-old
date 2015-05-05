@@ -163,9 +163,9 @@ ru:
     polish: Шлифовка
     other: Другая работа
   billing_types:
-    fixed_hourly: Часовая оплата
-    fixed_daily: Дневная оплата
-    fixed_project: За весь проект
+    hourly_rate: Часовая оплата
+    daily_rate: Дневная оплата
+    project_rate: За весь проект
 
   not_finalized_reasons:
     no_entries: в нём нет записей
