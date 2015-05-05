@@ -78,6 +78,8 @@ ru:
     attributes:
       user: Рабочий
       worked_on: Дата
+      final_date: Конечная дата
+      multiple_days: Заполнить сразу несколько дней
       project: Проект
       work_type: Тип работы
       comment: Комментарий
@@ -157,9 +159,9 @@ ru:
     polish: Шлифовка
     other: Другая работа
   billing_types:
-    fixed_hourly: Почасовая оплата
+    fixed_hourly: Часовая оплата
     fixed_daily: Дневная оплата
-    fixed_project: Оплата за весь проект
+    fixed_project: За весь проект
 
   not_finalized_reasons:
     no_entries: в нём нет записей

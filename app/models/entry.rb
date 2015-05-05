@@ -1,4 +1,7 @@
 class Entry < ActiveRecord::Base
+  attr_accessor :multiple_days
+  attr_accessor :final_date
+
   belongs_to :project
   belongs_to :user
   has_one :payout

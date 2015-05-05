@@ -30,8 +30,18 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(
-      :project_id, :work_type, :workers, :coefficient, :worked_on, :hours,
-      :hourly_rate, :comment
+      :project_id,
+      :work_type,
+      :workers,
+      :coefficient,
+      :worked_on,
+      :final_date,
+      :multiple_days,
+      :hours,
+      :hourly_rate,
+      :daily_rate,
+      :project_rate,
+      :comment
     )
   end
 
