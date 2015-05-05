@@ -13,7 +13,7 @@ class Entry < ActiveRecord::Base
             presence: true, if: :type_other?
 
   WORK_TYPES = %i( receive polish other )
-  BILLING_TYPES  = %i( fixed_hourly fixed_daily fixed_project )
+  BILLING_TYPES  = %i( hourly_rate daily_rate project_rate )
 
   before_create :remove_workers_and_coefficient
 
