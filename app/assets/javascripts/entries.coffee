@@ -5,12 +5,25 @@ $ ->
     else
       $('#final-date').hide()
 
+  toggleBillingTypes = (show) ->
+    if show
+      $('#billing-types').show()
+    else
+      $('#billing-types').hide()
+
   show_final_date = $('#entry_multiple_days').is(':checked')
   toggleFinalDate(show_final_date)
 
   $('#entry_multiple_days').change ->
     show_final_date = $(this).is(':checked')
     toggleFinalDate(show_final_date)
+
+  show_billing_types = $('#entry_work_type_other').is(':checked')
+  toggleBillingTypes(show_billing_types)
+
+  $('#work-types').change ->
+    show_billing_types = $('#entry_work_type_other').is(':checked')
+    toggleBillingTypes(show_billing_types)
 
   projects_select = $('#entry_project_id')
 
