@@ -49,10 +49,14 @@ ActiveRecord::Schema.define(version: 20150503100918) do
     t.decimal  "price_receive"
     t.decimal  "price_polish"
     t.decimal  "hourly_rate"
+    t.decimal  "daily_rate"
+    t.decimal  "project_rate"
     t.date     "start_on"
     t.date     "end_on"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "work_types",    default: [],              array: true
+    t.string   "billing_types", default: [],              array: true
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.datetime "finalized_at"
     t.integer  "finalized_by"
     t.string   "code"

@@ -63,6 +63,8 @@ ru:
       price_receive: Цена (приёмка)
       price_polish: Цена (шлифовка)
       hourly_rate: Часовая ставка
+      daily_rate: Дневная ставка
+      project_rate: Проектная ставка
       date: Дата
 
   entries:

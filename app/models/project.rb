@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
     Project.where('start_on <= ?', date)
   }
 
-  before_save :strip_title, :assign_code
+  before_save :strip_array_attrs, :strip_title, :assign_code
 
   def self.search(query = nil)
     if query
@@ -141,6 +141,11 @@ class Project < ActiveRecord::Base
   end
 
   private
+
+  def strip_array_attrs
+    self.work_types.reject!(&:blank?)
+    self.billing_types.reject!(&:blank?)
+  end
 
   def strip_title
     self.title = title.gsub(/\s+/, ' ').strip

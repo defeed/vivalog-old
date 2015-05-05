@@ -71,7 +71,11 @@ class ProjectsController < ApplicationController
         :volume,
         :price_receive,
         :price_polish,
-        :hourly_rate
+        :hourly_rate,
+        :daily_rate,
+        :project_rate,
+        :work_types => [],
+        :billing_types => []
       )
   end
 end
