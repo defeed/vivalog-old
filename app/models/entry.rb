@@ -19,8 +19,12 @@ class Entry < ActiveRecord::Base
 
   scope :with_type, ->(work_type) { where(work_type: work_type)}
 
-  def type_other?
+  def work_type_other?
     work_type == 'other'
+  end
+
+  def billed_hourly?
+    billing_type == 'hourly_rate'
   end
 
   def remove_workers_and_coefficient
