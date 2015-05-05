@@ -2,27 +2,37 @@
 .well.well-default
   = simple_form_for @entry do |form|
     = form.error_notification
-    - if can? :manage, User
-      .row
-        .col-sm-4
-          = form.association :user, collection: User.active, prompt: false, label: t('entries.attributes.user')
     .row
-      .col-sm-4
-        = form.input :worked_on, as: 'string', label: t('entries.attributes.worked_on'), input_html: { class: 'datepicker', value: Date.today.strftime('%d.%m.%Y') }
-      .col-sm-4
-        = form.association :project, collection: {}, prompt: t('forms.choose_project'), label: t('entries.attributes.project')
-      .col-sm-4
-        = form.input :work_type, collection: work_types_for_select, prompt: t('forms.choose_work_type'), label: t('entries.attributes.work_type')
-    .row
-      .col-sm-2#workers
-        = form.input :workers, label: t('entries.attributes.num_workers')
-      .col-sm-2#coefficient
-        = form.input :coefficient, label: t('entries.attributes.coefficient')
-      .col-sm-2#hours
-        = form.input :hours, label: t('entries.attributes.num_hours')
-      .col-sm-2#hourly-rate
-        = form.input :hourly_rate, input_html: { value: current_user.hourly_rate }, label: t('entries.attributes.hourly_rate')
-    .row
-      .col-sm-6
-        = form.input :comment, label: t('entries.attributes.comment')
+      .col-md-4.col-xs-12
+        .row
+          .col-sm-12
+            - if can? :manage, User
+              = form.association :user, collection: User.active, prompt: false, label: t('entries.attributes.user')
+            = form.input :worked_on, as: :string, label: t('entries.attributes.worked_on'), input_html: { class: 'datepicker', value: form.object.worked_on.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y') }
+            = form.input :multiple_days, as: :boolean, label: t('entries.attributes.multiple_days'), checked: @entry.multiple_days
+            = form.input :final_date, as: :string, label: t('entries.attributes.final_date'), input_html: { class: 'datepicker', value: form.object.final_date.try(:to_date).try(:strftime, '%d.%m.%Y') }
+      .col-md-4.col-xs-12
+        .row
+          .col-sm-12
+            = form.association :project, collection: {}, prompt: t('forms.choose_project'), label: t('entries.attributes.project')
+          .col-sm-12.col-xs-6
+            = form.collection_radio_buttons :work_type, work_types_for_select, :last, :first, item_wrapper_tag: 'div', item_wrapper_class: 'radio'
+          .col-sm-12.col-xs-6
+            = form.collection_radio_buttons :billing_type, billing_types_for_select, :last, :first, item_wrapper_tag: 'div', item_wrapper_class: 'radio'
+      .col-md-4.col-xs-12
+        .row
+          .col-xs-6#workers
+            = form.input :workers, label: t('entries.attributes.num_workers')
+          .col-xs-6#coefficient
+            = form.input :coefficient, label: t('entries.attributes.coefficient')
+          .col-xs-6#hours
+            = form.input :hours, label: t('entries.attributes.num_hours')
+          .col-xs-6#hourly-rate
+            = form.input :hourly_rate, input_html: { value: current_user.hourly_rate }, label: t('entries.attributes.hourly_rate')
+          .col-xs-6#daily-rate
+            = form.input :daily_rate, label: t('entries.attributes.daily_rate')
+          .col-xs-6#project-rate
+            = form.input :project_rate, label: t('entries.attributes.project_rate')
+          .col-sm-12
+            = form.input :comment, label: t('entries.attributes.comment'), as: :text, input_html: { rows: 5 }
     = form.submit t('forms.save'), class: 'btn btn-primary'
