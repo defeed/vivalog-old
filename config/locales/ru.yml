@@ -34,6 +34,10 @@ ru:
               blank: нужно указать
             hourly_rate:
               blank: нужно указать
+            daily_rate:
+              blank: нужно указать
+            project_rate:
+              blank: нужно указать
             workers:
               blank: нужно указать
             coefficient:
