@@ -11,6 +11,7 @@ class Entry < ActiveRecord::Base
   validates :hours, :hourly_rate, presence: true, if: :billed_hourly?
   validates :daily_rate, presence: true, if: :billed_daily?
   validates :project_rate, presence: true, if: :billed_by_project?
+  validates :billing_type, presence: true, if: :work_type_other?
 
   WORK_TYPES = %i( receive polish other )
   BILLING_TYPES  = %i( hourly_rate daily_rate project_rate )
