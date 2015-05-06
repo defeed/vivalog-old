@@ -32,6 +32,7 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(
       :project_id,
       :work_type,
+      :billing_type,
       :workers,
       :coefficient,
       :worked_on,
