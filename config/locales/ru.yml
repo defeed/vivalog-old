@@ -28,8 +28,6 @@ ru:
               blank: нужно указать
             worked_on:
               blank: нужно указать
-            work_type:
-              blank: нужно указать
             hours:
               blank: нужно указать
             hourly_rate:
@@ -86,6 +84,7 @@ ru:
       multiple_days: Заполнить сразу несколько дней
       project: Проект
       work_type: Тип работы
+      billing_type: Оплата
       comment: Комментарий
       num_workers: '# рабочих'
       coefficient: 'Коэфф.'
