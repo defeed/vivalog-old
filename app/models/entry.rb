@@ -37,7 +37,7 @@ class Entry < ActiveRecord::Base
   end
 
   def remove_workers_and_coefficient
-    return unless type_other?
+    return unless work_type_other?
 
     self.workers = nil
     self.coefficient = nil
