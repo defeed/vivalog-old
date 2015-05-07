@@ -42,6 +42,9 @@ $ ->
   toggleCheckMultipleDays = (checked) ->
     $('#entry_multiple_days').prop('checked', checked)
 
+  toggleRequired = (element, required) ->
+    element.prop('required', required)
+
   show_workers_coeff = $('#entry_work_type_receive').is(':checked') || $('#entry_work_type_polish').is(':checked')
   toggleWorkersCoefficient(show_workers_coeff)
 
@@ -72,6 +75,8 @@ $ ->
     toggleHourlyRate(show_hourly_rate)
     toggleDailyRate(show_daily_rate)
     toggleProjectRate(show_project_rate)
+    toggleRequired($('#entry_workers'), show_workers_coeff)
+    toggleRequired($('#entry_coefficient'), show_workers_coeff)
 
   $('#billing-types').change ->
     show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
@@ -83,6 +88,11 @@ $ ->
     toggleProjectRate(show_project_rate)
     toggleFinalDate(show_final_date)
     toggleCheckMultipleDays(show_final_date)
+    toggleRequired($('#entry_hourly_rate'), show_hourly_rate)
+    toggleRequired($('#entry_hours'), show_hourly_rate)
+    toggleRequired($('#entry_daily_rate'), show_daily_rate)
+    toggleRequired($('#entry_project_rate'), show_project_rate)
+    toggleRequired($('#entry_final_date'), show_project_rate)
 
   projects_select = $('#entry_project_id')
 
@@ -129,7 +139,7 @@ $ ->
     updateValue($('#entry_project_rate'), project.project_rate)
 
   updateWorkTypes = (types) ->
-    $('#work-types .form-group').html('')
+    $('#work-types fieldset').html('')
     $.each types, () ->
       div = $('<div>').addClass('radio')
       label = $('<label>').text(this.value)
@@ -142,10 +152,10 @@ $ ->
 
       input.prependTo(label)
       label.appendTo(div)
-      $('#work-types .form-group').append(div)
+      $('#work-types fieldset').append(div)
 
   updateBillingTypes = (types) ->
-    $('#billing-types .form-group').html('')
+    $('#billing-types fieldset').html('')
     $.each types, () ->
       div = $('<div>').addClass('radio')
       label = $('<label>').text(this.value)
@@ -158,7 +168,7 @@ $ ->
 
       input.prependTo(label)
       label.appendTo(div)
-      $('#billing-types .form-group').append(div)
+      $('#billing-types fieldset').append(div)
 
   clearProjectsSelect = ->
     projects_select.find('option:not([value=""])').remove()
@@ -167,3 +177,8 @@ $ ->
     $.each projects, () ->
       title = '[' + this.code + '] ' + this.title
       projects_select.append($("<option />").val(this.id).text(title))
+
+  $("#new_entry").validate({rules: {'entry[work_type]': {required: true}, 'entry[billing_type]': {required: true}}})
+  # $("fieldset.wkt").rules('add', 'required')
+  # $("[name='nameofobject']");
+  # $('input[name=entry[billing_type]]').rules('add', 'required')

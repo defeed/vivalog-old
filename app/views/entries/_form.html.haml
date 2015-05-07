@@ -18,8 +18,12 @@
             = form.association :project, collection: {}, prompt: t('forms.choose_project'), label: t('entries.attributes.project')
           .col-sm-12.col-xs-6#work-types
             .form-group
+              %fieldset
+              %label.error{for: 'entry[work_type]'}
           .col-sm-12.col-xs-6#billing-types
             .form-group
+              %fieldset
+              %label.error{for: 'entry[billing_type]'}
       .col-md-4.col-xs-12
         .row
           .col-xs-6#workers

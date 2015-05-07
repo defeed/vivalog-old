@@ -33,7 +33,13 @@ body {
   #hourly-rate,
   #daily-rate,
   #project-rate,
-  #billing-types {
+  #work-types,
+  #billing-types,
+  label.error {
     display: none;
+  }
+
+  label.error {
+    color: $brand-danger;
   }
 }
