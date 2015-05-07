@@ -5,6 +5,7 @@ class Entry < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   has_one :payout
+  belongs_to :finalizer, class_name: 'User', foreign_key: 'finalized_by'
 
   validates :user_id, :project_id, :worked_on, :work_type, presence: true
   validates :coefficient, :workers, presence: true, unless: :work_type_other?
