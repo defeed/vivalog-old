@@ -28,6 +28,8 @@ ru:
               blank: нужно указать
             worked_on:
               blank: нужно указать
+            final_date:
+              blank: нужно указать
             hours:
               blank: нужно указать
             hourly_rate:
