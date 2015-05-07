@@ -3,7 +3,7 @@ $ ->
     if show
       $('#final-date').show()
     else
-      $('#final-date').hide()
+      $('#final-date').hide().find('input').val('')
 
   toggleBillingTypes = (show) ->
     if show
@@ -39,6 +39,9 @@ $ ->
     else
       $('#project-rate').hide()
 
+  toggleCheckMultipleDays = (checked) ->
+    $('#entry_multiple_days').prop('checked', checked)
+
   show_workers_coeff = $('#entry_work_type_receive').is(':checked') || $('#entry_work_type_polish').is(':checked')
   toggleWorkersCoefficient(show_workers_coeff)
 
@@ -48,7 +51,7 @@ $ ->
   show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
   toggleDailyRate(show_daily_rate)
 
-  show_final_date = $('#entry_multiple_days').is(':checked')
+  show_final_date = $('#entry_multiple_days').is(':checked') || $('#entry_billing_type_project_rate').is(':checked')
   toggleFinalDate(show_final_date)
 
   $('#entry_multiple_days').change ->
@@ -73,12 +76,13 @@ $ ->
   $('#billing-types').change ->
     show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
     show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
-    show_hourly_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_hourly_rate').is(':checked')
-    show_daily_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_daily_rate').is(':checked')
     show_project_rate = $('#entry_work_type_other').is(':checked') && $('#entry_billing_type_project_rate').is(':checked')
+    show_final_date = $('#entry_billing_type_project_rate').is(':checked') || ($('#entry_multiple_days').is(':checked') && $('#entry_final_date').val() != '')
     toggleHourlyRate(show_hourly_rate)
     toggleDailyRate(show_daily_rate)
     toggleProjectRate(show_project_rate)
+    toggleFinalDate(show_final_date)
+    toggleCheckMultipleDays(show_final_date)
 
   projects_select = $('#entry_project_id')
 
