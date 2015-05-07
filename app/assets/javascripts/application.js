@@ -18,4 +18,6 @@
 //= require moment
 //= require moment/ru
 //= require bootstrap-datetimepicker
+//= require jquery.validate
+//= require jquery.validate.localization/messages_ru
 //= require_tree .
