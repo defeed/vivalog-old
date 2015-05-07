@@ -17,9 +17,9 @@
           .col-sm-12
             = form.association :project, collection: {}, prompt: t('forms.choose_project'), label: t('entries.attributes.project')
           .col-sm-12.col-xs-6#work-types
-            = form.collection_radio_buttons :work_type, work_types_for_select, :last, :first, item_wrapper_tag: 'div', item_wrapper_class: 'radio', collection_wrapper_tag: 'div', collection_wrapper_class: 'form-group'
+            .form-group
           .col-sm-12.col-xs-6#billing-types
-            = form.collection_radio_buttons :billing_type, billing_types_for_select, :last, :first, item_wrapper_tag: 'div', item_wrapper_class: 'radio', collection_wrapper_tag: 'div', collection_wrapper_class: 'form-group'
+            .form-group
       .col-md-4.col-xs-12
         .row
           .col-xs-6#workers

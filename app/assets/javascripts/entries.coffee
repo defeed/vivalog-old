@@ -86,6 +86,15 @@ $ ->
 
   projects_select = $('#entry_project_id')
 
+  loadProjectData = (project_id) ->
+    return if project_id == null
+    $.ajax '/projects/' + project_id,
+    dataType: 'json',
+    success: (data, status, xhr) ->
+      updateForm(data.project)
+    error: (xhr, status, err) ->
+      console.log err
+
   loadProjects = (date) ->
     $.ajax '/projects/find_by_start_date',
       data: { date: date }
@@ -106,8 +115,54 @@ $ ->
     clearProjectsSelect()
     loadProjects($(this).val())
 
+  $('#new_entry').on 'change', '#entry_project_id', (event) ->
+    loadProjectData($(this).val())
+
+  updateValue = (element, value) ->
+    element.val(value)
+
+  updateForm = (project) ->
+    updateWorkTypes(project.work_types)
+    updateBillingTypes(project.billing_types)
+    updateValue($('#entry_hourly_rate'), project.hourly_rate)
+    updateValue($('#entry_daily_rate'), project.daily_rate)
+    updateValue($('#entry_project_rate'), project.project_rate)
+
+  updateWorkTypes = (types) ->
+    $('#work-types .form-group').html('')
+    $.each types, () ->
+      div = $('<div>').addClass('radio')
+      label = $('<label>').text(this.value)
+      input_attrs =
+        id: 'entry_work_type_' + this.key
+        value: this.key
+        type: 'radio'
+        name: 'entry[work_type]'
+      input = $('<input>').attr(input_attrs)
+
+      input.prependTo(label)
+      label.appendTo(div)
+      $('#work-types .form-group').append(div)
+
+  updateBillingTypes = (types) ->
+    $('#billing-types .form-group').html('')
+    $.each types, () ->
+      div = $('<div>').addClass('radio')
+      label = $('<label>').text(this.value)
+      input_attrs =
+        id: 'entry_billing_type_' + this.key
+        value: this.key
+        type: 'radio'
+        name: 'entry[billing_type]'
+      input = $('<input>').attr(input_attrs)
+
+      input.prependTo(label)
+      label.appendTo(div)
+      $('#billing-types .form-group').append(div)
+
   clearProjectsSelect = ->
     projects_select.find('option:not([value=""])').remove()
+
   populateProjectsSelect = (projects) ->
     $.each projects, () ->
       title = '[' + this.code + '] ' + this.title
