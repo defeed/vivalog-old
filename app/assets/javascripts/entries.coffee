@@ -195,6 +195,3 @@ $ ->
       projects_select.append($("<option />").val(this.id).text(title))
 
   $("#new_entry").validate({rules: {'entry[work_type]': {required: true}, 'entry[billing_type]': {required: true}}})
-  # $("fieldset.wkt").rules('add', 'required')
-  # $("[name='nameofobject']");
-  # $('input[name=entry[billing_type]]').rules('add', 'required')
