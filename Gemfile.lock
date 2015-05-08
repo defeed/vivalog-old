@@ -49,6 +49,7 @@ GEM
       sass (>= 3.2.19)
     bootstrap3-datetimepicker-rails (4.7.14)
       momentjs-rails (>= 2.8.1)
+    browser (0.8.0)
     builder (3.2.2)
     cancancan (1.10.1)
     coderay (1.1.0)
@@ -194,6 +195,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.7.14)
+  browser
   cancancan
   coffee-rails (~> 4.1.0)
   devise

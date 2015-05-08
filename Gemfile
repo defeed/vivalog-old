@@ -20,6 +20,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'jquery-validation-rails', '~> 1.13.1'
 gem 'cancancan'
 gem 'babosa'
+gem 'browser'
 
 # source 'https://rails-assets.org' do
 #   gem 'rails-assets-typeahead.js'
