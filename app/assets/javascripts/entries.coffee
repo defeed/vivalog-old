@@ -125,6 +125,10 @@ $ ->
     clearProjectsSelect()
     loadProjects($(this).val())
 
+  $('#new_entry').on 'change', "#entry_worked_on", (event) ->
+    clearProjectsSelect()
+    loadProjects($(this).val())
+
   $('#new_entry').on 'change', '#entry_project_id', (event) ->
     loadProjectData($(this).val())
 
