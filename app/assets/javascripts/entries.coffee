@@ -130,10 +130,22 @@ $ ->
     loadProjects($(this).val())
 
   $('#new_entry').on 'change', '#entry_project_id', (event) ->
+    clearProjectFields()
     loadProjectData($(this).val())
 
   updateValue = (element, value) ->
     element.val(value)
+
+  clearProjectFields = ->
+    updateValue($('#entry_hourly_rate'), '')
+    updateValue($('#entry_daily_rate'), '')
+    updateValue($('#entry_project_rate'), '')
+    $('#workers').hide()
+    $('#coefficient').hide()
+    $('#hourly-rate').hide()
+    $('#hours').hide()
+    $('#daily-rate').hide()
+    $('#project-rate').hide()
 
   updateForm = (project) ->
     updateWorkTypes(project.work_types)
