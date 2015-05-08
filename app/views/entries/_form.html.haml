@@ -32,13 +32,13 @@
           .col-xs-6#coefficient
             = form.input :coefficient, label: t('entries.attributes.coefficient'), input_html: { pattern: "\\d*" }
           .col-xs-6#hourly-rate
-            = form.input :hourly_rate, input_html: { value: current_user.hourly_rate, pattern: "\\d*"}, label: t('entries.attributes.hourly_rate')
+            = form.input :hourly_rate, input_html: { value: current_user.hourly_rate, pattern: "\\d*"}, label: t('entries.attributes.hourly_rate'), placeholder: '€'
           .col-xs-6#hours
             = form.input :hours, label: t('entries.attributes.num_hours'), input_html: { pattern: "\\d*" }
           .col-xs-12#daily-rate
-            = form.input :daily_rate, label: t('entries.attributes.daily_rate'), input_html: { pattern: "\\d*" }
+            = form.input :daily_rate, label: t('entries.attributes.daily_rate'), input_html: { pattern: "\\d*" }, placeholder: '€'
           .col-xs-12#project-rate
-            = form.input :project_rate, label: t('entries.attributes.project_rate'), input_html: { pattern: "\\d*" }
+            = form.input :project_rate, label: t('entries.attributes.project_rate'), input_html: { pattern: "\\d*" }, placeholder: '€'
           .col-xs-12
             = form.input :comment, label: t('entries.attributes.comment'), as: :text, input_html: { rows: 5 }
     = form.submit t('forms.save'), class: 'btn btn-primary'
