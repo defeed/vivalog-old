@@ -37,7 +37,22 @@ body {
   label.error {
     display: none;
   }
+}
 
+.new_project,
+.edit_project {
+  #project-billing-types,
+  .project_price_receive,
+  .project_price_polish,
+  .project_hourly_rate,
+  .project_daily_rate,
+  .project_project_rate,
+  label.error {
+    display: none;
+  }
+}
+
+form {
   label.error {
     color: $brand-danger;
   }

@@ -1,3 +1,5 @@
+- date_input_type = desktop_browser? ? 'text' : 'date'
+
 - if @project.new_record?
   %h2= t('projects.new_project')
 .well.well-default
@@ -7,28 +9,32 @@
       .col-md-4
         = form.input :title, label: t('projects.attributes.title')
       .col-md-4.col-sm-6.col-xs-12
-        = form.input :start_on, as: 'string', label: t('projects.attributes.start_on'), input_html: { class: 'datepicker', value: form.object.start_on.try(:strftime, '%d.%m.%Y') }
+        = form.input :start_on, as: 'string', label: t('projects.attributes.start_on'), input_html: { type: date_input_type, class: 'datepicker', value: form.object.start_on.try(:strftime, '%d.%m.%Y'), data: { desktop: desktop_browser? } }
       .col-md-4.col-sm-6.col-xs-12
-        = form.input :end_on, as: 'string', label: t('projects.attributes.end_on'), input_html: { class: 'datepicker', value: form.object.end_on.try(:strftime, '%d.%m.%Y') }
+        = form.input :end_on, as: 'string', label: t('projects.attributes.end_on'), input_html: { type: date_input_type, class: 'datepicker', value: form.object.end_on.try(:strftime, '%d.%m.%Y'), data: { desktop: desktop_browser? } }
     .row
       .col-md-4.col-sm-12
         .row
-          .col-md-12.col-sm-6.col-xs-12
-            = form.collection_check_boxes :work_types, work_types_for_select, :last, :first, collection_wrapper_tag: 'fieldset', item_wrapper_tag: 'div', item_wrapper_class: 'checkbox', checked: @project.work_types
-          .col-md-12.col-sm-6.col-xs-12
-            = form.collection_check_boxes :billing_types, billing_types_for_select, :last, :first, collection_wrapper_tag: 'fieldset', item_wrapper_tag: 'div', item_wrapper_class: 'checkbox', checked: @project.billing_types
+          .col-md-12.col-sm-6.col-xs-12#project-work-types
+            %fieldset
+              = form.collection_check_boxes :work_types, work_types_for_select, :last, :first, item_wrapper_tag: 'div', item_wrapper_class: 'checkbox', checked: @project.work_types
+              %label.error{for: 'project[work_types][]'}
+          .col-md-12.col-sm-6.col-xs-12#project-billing-types
+            %fieldset
+              = form.collection_check_boxes :billing_types, billing_types_for_select, :last, :first, collection_wrapper_tag: 'fieldset', item_wrapper_tag: 'div', item_wrapper_class: 'checkbox', checked: @project.billing_types
+              %label.error{for: 'project[billing_types][]'}
       .col-md-4.col-sm-6.col-xs-12
         .row
           .col-xs-12
             = form.input :volume, label: t('projects.attributes.volume'), placeholder: 'm²'
-            = form.input :price_receive, label: t('projects.attributes.price_receive')
-            = form.input :price_polish, label: t('projects.attributes.price_polish')
+            = form.input :price_receive, label: t('projects.attributes.price_receive'), placeholder: '€'
+            = form.input :price_polish, label: t('projects.attributes.price_polish'), placeholder: '€'
       .col-md-4.col-sm-6.col-xs-12
         .row
           .col-xs-12
-            = form.input :hourly_rate, label: t('projects.attributes.hourly_rate')
-            = form.input :daily_rate, label: t('projects.attributes.daily_rate')
-            = form.input :project_rate, label: t('projects.attributes.project_rate')
+            = form.input :hourly_rate, label: t('projects.attributes.hourly_rate'), placeholder: '€'
+            = form.input :daily_rate, label: t('projects.attributes.daily_rate'), placeholder: '€'
+            = form.input :project_rate, label: t('projects.attributes.project_rate'), placeholder: '€'
     .row
       .col-xs-12
         .form-group
