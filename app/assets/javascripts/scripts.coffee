@@ -1,5 +1,5 @@
 $ ->
-  $('.datepicker').datetimepicker({
+  $('.datepicker[data-desktop=true]').datetimepicker({
     format: 'DD.MM.YYYY'
     showClear: true,
     showTodayButton: true

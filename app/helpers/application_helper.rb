@@ -188,4 +188,8 @@ module ApplicationHelper
       class: 'label label-primary',
     )
   end
+
+  def desktop_browser?
+    %i( mac windows linux ).include? browser.platform
+  end
 end
