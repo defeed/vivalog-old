@@ -38,11 +38,10 @@
     .row
       .col-xs-12
         .form-group
+          = button_tag(type: :submit, class: 'btn btn-primary') do
+            = fa_icon('save', text: t('forms.save'))
           - if @project.persisted?
-            = form.submit t('forms.save'), class: 'btn btn-primary'
             = link_to fa_icon('check-square-o', text: t('forms.finalize')), finalize_project_path(@project), class: 'btn btn-success', method: :patch
-          - else
-            = form.submit t('forms.create'), class: 'btn btn-primary'
     - if @project.persisted?
       .row
         .col-xs-12

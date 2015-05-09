@@ -15,10 +15,9 @@
           = form.input :hourly_rate, label: t('users.attributes.hourly_rate'), placeholder: '€'
     .row
       .col-md-12
+        = button_tag(type: :submit, class: 'btn btn-primary') do
+          = fa_icon('save', text: t('forms.save'))
         - if @user.persisted?
-          = form.submit t('forms.save'), class: 'btn btn-primary'
           - if can? :manage, User
             = activate_button(@user)
           = link_to fa_icon('send-o', text: t('forms.send_new_password')), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: t('forms.are_you_sure') }
-        - else
-          = form.submit t('forms.create'), class: 'btn btn-primary'
