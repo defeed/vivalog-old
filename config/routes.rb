@@ -20,7 +20,11 @@ Rails.application.routes.draw do
       patch :finalize
     end
   end
-  resources :entries, only: [:new, :create, :destroy]
+  resources :entries, only: [:new, :create, :destroy] do
+    member do
+      patch :finalize
+    end
+  end
   resource :dashboard, only: :index
   get :profile, to: 'users#show_profile'
 

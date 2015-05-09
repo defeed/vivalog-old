@@ -26,6 +26,11 @@ class EntriesController < ApplicationController
     end
   end
 
+  def finalize
+    result = @entry.finalize(current_user)
+    redirect_to @entry.project, notice: t('entries.finalized')
+  end
+
   private
 
   def entry_params
