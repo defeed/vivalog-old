@@ -20,7 +20,7 @@ class EntriesController < ApplicationController
     end
 
     if @entry.save
-      create_additional_entries(period, @entry.user_id)
+      create_additional_entries(period, @entry.user_id) if final_date
       redirect_to new_entry_path
     else
       render :new
