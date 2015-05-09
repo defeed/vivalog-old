@@ -17,7 +17,7 @@ class Entry < ActiveRecord::Base
   WORK_TYPES = %i( receive polish other )
   BILLING_TYPES  = %i( hourly_rate daily_rate project_rate )
 
-  before_create :remove_workers_and_coefficient
+  before_create :clear_fields
 
   scope :with_type, ->(work_type) { where(work_type: work_type)}
 
@@ -37,10 +37,15 @@ class Entry < ActiveRecord::Base
     billing_type == 'project_rate'
   end
 
-  def remove_workers_and_coefficient
-    return unless work_type_other?
-
-    self.workers = nil
-    self.coefficient = nil
+  def clear_fields
+    if work_type_other?
+      self.workers = nil
+      self.coefficient = nil
+    else
+      self.hours = nil
+      self.hourly_rate = nil
+      self.daily_rate = nil
+      self.project_rate = nil
+    end
   end
 end
