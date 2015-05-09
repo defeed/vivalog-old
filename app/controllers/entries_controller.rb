@@ -7,6 +7,12 @@ class EntriesController < ApplicationController
   end
 
   def create
+    if final_date = params[:entry][:final_date].presence
+      first_day = params[:entry][:worked_on].to_date.next_day
+      final_day = final_date.to_date
+      period = (first_day..final_day)
+    end
+
     if params[:entry][:user_id]
       @entry = Entry.new(entry_params_for_user)
     else
@@ -14,6 +20,7 @@ class EntriesController < ApplicationController
     end
 
     if @entry.save
+      create_additional_entries(period, @entry.user_id)
       redirect_to new_entry_path
     else
       render :new
@@ -32,6 +39,13 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def create_additional_entries(days, user_id)
+    days.each do |day|
+      params = entry_params.merge!(user_id: user_id, worked_on: day)
+      Entry.create!(params)
+    end
+  end
 
   def entry_params
     params.require(:entry).permit(
