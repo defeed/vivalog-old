@@ -41,6 +41,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'thin'
 end
 
 ruby '2.2.0'
