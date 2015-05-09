@@ -112,6 +112,11 @@ class Project < ActiveRecord::Base
     !!finalized_at
   end
 
+  def length
+    return 1 unless end_on
+    (start_on..end_on).count
+  end
+
   def ensure_correct_dates
     return true unless start_on && end_on
     return true unless end_on
