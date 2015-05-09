@@ -97,7 +97,7 @@ $ ->
   projects_select = $('#entry_project_id')
 
   loadProjectData = (project_id) ->
-    return if project_id == null
+    return if project_id == ''
     $.ajax '/projects/' + project_id,
     dataType: 'json',
     success: (data, status, xhr) ->
