@@ -51,6 +51,7 @@ class Entry < ActiveRecord::Base
 
   def finalize(user)
     transaction do
+      make_payout
       update(finalized_at: Time.now, finalizer: user)
       true
     end
@@ -58,5 +59,41 @@ class Entry < ActiveRecord::Base
 
   def finalized?
     !!finalized_at
+  end
+
+  def make_payout
+    case work_type
+    when 'receive', 'polish'
+      make_payout_for_regular_work
+    when 'other'
+      make_payout_for_other_work
+    end
+  end
+
+  def make_payout_for_regular_work
+    project_entries = project.entries.where(work_type: work_type)
+    base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
+    base_amount = project.send("price_#{work_type}") / base_coeff
+
+    create_payout!(
+      project: project,
+      user: user,
+      base_amount: base_amount,
+      amount: base_amount * coefficient
+    )
+  end
+
+  def make_payout_for_other_work
+    calculated_amount = case billing_type
+      when 'hourly_rate' then self.hourly_rate * hours
+      when 'daily_rate' then self.daily_rate
+      when 'project_rate' then self.project_rate / (project.length)
+    end
+
+    create_payout!(
+      project: project,
+      user: user,
+      amount: calculated_amount
+    )
   end
 end
