@@ -48,4 +48,15 @@ class Entry < ActiveRecord::Base
       self.project_rate = nil
     end
   end
+
+  def finalize(user)
+    transaction do
+      update(finalized_at: Time.now, finalizer: user)
+      true
+    end
+  end
+
+  def finalized?
+    !!finalized_at
+  end
 end
