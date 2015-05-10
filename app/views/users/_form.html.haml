@@ -14,10 +14,12 @@
         .col-md-2.col-xs-6
           = form.input :hourly_rate, label: t('users.attributes.hourly_rate'), placeholder: '€'
     .row
-      .col-md-12
-        = button_tag(type: :submit, class: 'btn btn-primary') do
+      .col-md-3.form-group
+        = button_tag(type: :submit, class: 'btn btn-block btn-primary') do
           = fa_icon('save', text: t('forms.save'))
-        - if @user.persisted?
-          - if can? :manage, User
+      - if @user.persisted?
+        - if can?(:manage, User) && @user != current_user
+          .col-md-3.form-group
             = activate_button(@user)
-          = link_to fa_icon('send-o', text: t('forms.send_new_password')), reset_password_user_path(@user), class: 'btn btn-default', data: { confirm: t('forms.are_you_sure') }
+        .col-md-3.form-group
+          = link_to fa_icon('send-o', text: t('forms.send_new_password')), reset_password_user_path(@user), class: 'btn btn-block btn-default', data: { confirm: t('forms.are_you_sure') }

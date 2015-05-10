@@ -76,7 +76,7 @@ module ApplicationHelper
     link_to(
       activate_button_text(user.is_active?),
       toggle_active_user_path(user),
-      class: "btn btn-#{btn_class}",
+      class: "btn btn-block btn-#{btn_class}",
       method: :patch
     )
   end
