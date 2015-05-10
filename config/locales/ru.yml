@@ -78,6 +78,8 @@ ru:
     new_entry: Новая запись
     created: Запись создана
     deleted: Запись удалена
+    project_start_on: Проект начался
+    project_end_on: Проект закончился
 
     attributes:
       user: Рабочий

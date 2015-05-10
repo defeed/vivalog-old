@@ -10,9 +10,15 @@
             - if can? :manage, User
               = form.association :user, collection: User.active, prompt: false, label: t('entries.attributes.user')
             = form.input :worked_on, as: :string, label: t('entries.attributes.worked_on'), input_html: { type: date_input_type, class: 'datepicker', value: form.object.worked_on.try(:strftime, '%d.%m.%Y') || Date.today.strftime('%d.%m.%Y'), data: { desktop: desktop_browser? } }
+            %span.help-block#start-on-help
+              = t('entries.project_start_on')
+              %span.date
             = form.input :multiple_days, as: :boolean, label: t('entries.attributes.multiple_days'), checked: @entry.multiple_days
             #final-date
               = form.input :final_date, as: :string, label: t('entries.attributes.final_date'), input_html: { type: date_input_type, class: 'datepicker', value: form.object.final_date.try(:to_date).try(:strftime, '%d.%m.%Y'), data: { desktop: desktop_browser? } }
+              %span.help-block#end-on-help
+                = t('entries.project_end_on')
+                %span.date
       .col-md-4.col-xs-12
         .row
           .col-sm-12
@@ -41,5 +47,6 @@
             = form.input :project_rate, label: t('entries.attributes.project_rate'), input_html: { pattern: "\\d*" }, placeholder: '€'
           .col-xs-12
             = form.input :comment, label: t('entries.attributes.comment'), as: :text, input_html: { rows: 5 }
+    %hr
     = button_tag(type: :submit, class: 'btn btn-primary') do
       = fa_icon('save', text: t('forms.save'))

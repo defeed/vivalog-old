@@ -146,6 +146,8 @@ $ ->
     $('#hours').hide()
     $('#daily-rate').hide()
     $('#project-rate').hide()
+    $('#help-start-on').hide().find('.date').text('')
+    $('#help-end-on').hide().find('.date').text('')
 
   updateForm = (project) ->
     updateWorkTypes(project.work_types)
@@ -153,6 +155,7 @@ $ ->
     updateValue($('#entry_hourly_rate'), project.hourly_rate)
     updateValue($('#entry_daily_rate'), project.daily_rate)
     updateValue($('#entry_project_rate'), project.project_rate)
+    updateHelpBlocks(project.start_on, project.end_on)
 
   updateWorkTypes = (types) ->
     $('#work-types fieldset').html('')
@@ -185,6 +188,12 @@ $ ->
       input.prependTo(label)
       label.appendTo(div)
       $('#billing-types fieldset').append(div)
+
+  updateHelpBlocks = (start_on, end_on) ->
+    if start_on != null
+      $('#start-on-help').show().find('.date').text(start_on)
+    if end_on != null
+      $('#end-on-help').show().find('.date').text(end_on)
 
   clearProjectsSelect = ->
     projects_select.find('option:not([value=""])').remove()
