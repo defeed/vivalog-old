@@ -58,7 +58,6 @@ class Entry < ActiveRecord::Base
   end
 
   def unfinalize
-    payout.destroy
     update(finalized_at: nil, finalized_by: nil)
   end
 

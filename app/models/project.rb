@@ -72,6 +72,7 @@ class Project < ActiveRecord::Base
 
   def unfinalize
     entries(&:unfinalize)
+    payouts.destroy_all
     update(finalized_at: nil, finalized_by: nil)
   end
 
