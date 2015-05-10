@@ -16,13 +16,24 @@ class Project < ActiveRecord::Base
 
   before_save :strip_array_attrs, :strip_title, :assign_code
 
-  def self.search(query = nil)
-    if query
-      result = where('title ILIKE ? OR code ILIKE ?', "%#{query}%", "%#{query}%")
-    else
-      result = all
-    end
+  def self.search(params = {})
+    result = all
+    start_on = params[:start_on]
+    end_on = params[:end_on]
+    worked_on = params[:worked_on]
+    query = params[:query]
 
+    result = result.where(
+      'title ILIKE ? OR code ILIKE ?',
+      "%#{query}%", "%#{query}%"
+    ) if query
+
+    result = result.where('start_on >= ?', start_on.to_date) if start_on
+    result = result.where('end_on <= ?', end_on.to_date) if end_on
+    result = result.where(
+      'start_on <= ? AND (end_on >= ? OR end_on IS NULL)',
+      worked_on.to_date, worked_on.to_date
+    ) if worked_on
     result.order(start_on: :desc)
   end
 

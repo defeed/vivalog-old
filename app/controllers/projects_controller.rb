@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     @project = Project.new
-    @projects = Project.search(params[:query])
+    @projects = Project.search(params)
   end
 
   def show
