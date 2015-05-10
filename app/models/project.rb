@@ -70,6 +70,11 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def unfinalize
+    entries(&:unfinalize)
+    update(finalized_at: nil, finalized_by: nil)
+  end
+
   def finalized?
     !!finalized_at
   end

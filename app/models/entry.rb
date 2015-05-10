@@ -57,6 +57,11 @@ class Entry < ActiveRecord::Base
     end
   end
 
+  def unfinalize
+    payout.destroy
+    update(finalized_at: nil, finalized_by: nil)
+  end
+
   def finalized?
     !!finalized_at
   end
