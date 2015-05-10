@@ -45,10 +45,12 @@ class Project < ActiveRecord::Base
     reasons.push :no_price_receive if price_receive.blank?
     reasons.push :no_price_polish if price_polish.blank?
     reasons.push :workers_receive_not_eql unless begin
-      entries.with_type(:receive).count == avg_workers_for(:receive)
+      daily_entries = entries.with_type(:receive).count / length.to_f
+      daily_entries == avg_workers_for(:receive)
     end
     reasons.push :workers_polish_not_eql unless begin
-      entries.with_type(:polish).count == avg_workers_for(:polish)
+      daily_entries = entries.with_type(:polish).count / length.to_f
+      daily_entries == avg_workers_for(:polish)
     end
     reasons.push :start_date_in_future if start_on && start_on > Date.today
     reasons.push :start_date_after_end_date if begin
