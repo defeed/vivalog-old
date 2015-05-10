@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
 
   def find_by_start_date
     render json: Project.not_finalized
-                        .by_start_date(params[:date])
+                        .search(worked_on: params[:worked_on])
                         .select(:id, :code, :title)
   end
 

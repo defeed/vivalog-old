@@ -107,7 +107,7 @@ $ ->
 
   loadProjects = (date) ->
     $.ajax '/projects/find_by_start_date',
-      data: { date: date }
+      data: { worked_on: date }
       success: (data, status, xhr) ->
         populateProjectsSelect(data)
       error: (xhr, status, err) ->
