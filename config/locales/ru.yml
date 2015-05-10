@@ -42,6 +42,13 @@ ru:
               blank: нужно указать
             coefficient:
               blank: нужно указать
+        user:
+          attributes:
+            password:
+              blank: нужно указать
+              too_short: слишком короткий (минимум 5 символов)
+            password_confirmation:
+              confirmation: пароли не совпадают
 
   hello_username: 'Здравствуйте, %{name}'
   two_words_connector: ' и '
