@@ -62,49 +62,9 @@ class Project < ActiveRecord::Base
     return not_finalized_reasons unless finalizable?
 
     transaction do
-      create_payouts
+      entries.each { |e| e.finalize(user) }
       update(finalized_at: Time.now, finalizer: user)
       true
-    end
-  end
-
-  def create_payouts
-    transaction do
-      create_payouts_for_fixed_work
-      create_payouts_for_hourly_work
-    end
-  end
-
-  def create_payouts_for_fixed_work
-    transaction do
-      %w( receive polish ).each do |work_type|
-        project_entries = entries.where(work_type: work_type)
-        base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
-        base_amount = send("price_#{work_type}") / base_coeff
-
-        project_entries.each do |entry|
-          entry.create_payout!(
-            project: self,
-            user: entry.user,
-            base_amount: base_amount,
-            amount: base_amount * entry.coefficient
-          )
-        end
-      end
-    end
-  end
-
-  def create_payouts_for_hourly_work
-    transaction do
-      project_entries = entries.where(work_type: :other)
-
-      project_entries.each do |entry|
-        entry.create_payout!(
-          project: self,
-          user: entry.user,
-          amount: entry.hourly_rate * entry.hours
-        )
-      end
     end
   end
 
