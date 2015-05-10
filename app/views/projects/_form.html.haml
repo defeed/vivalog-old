@@ -36,14 +36,11 @@
             = form.input :daily_rate, label: t('projects.attributes.daily_rate'), placeholder: '€'
             = form.input :project_rate, label: t('projects.attributes.project_rate'), placeholder: '€'
     .row
-      .col-xs-12
-        .form-group
-          = button_tag(type: :submit, class: 'btn btn-primary') do
-            = fa_icon('save', text: t('forms.save'))
-          - if @project.persisted?
-            = link_to fa_icon('check-square-o', text: t('forms.finalize')), finalize_project_path(@project), class: 'btn btn-success', method: :patch
-    - if @project.persisted?
-      .row
-        .col-xs-12
-          .form-group
-            = link_to fa_icon('trash-o', text: t('forms.delete')), project_path(@project), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-danger pull-right'
+      .col-md-3.form-group
+        = button_tag(type: :submit, class: 'btn btn-block btn-primary') do
+          = fa_icon('save', text: t('forms.save'))
+      - if @project.persisted?
+        .col-md-3.form-group
+          = link_to fa_icon('check-square-o', text: t('forms.finalize')), finalize_project_path(@project), class: 'btn btn-block btn-success', method: :patch
+        .col-md-3.col-md-offset-3.form-group
+          = link_to fa_icon('trash-o', text: t('forms.delete')), project_path(@project), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-block btn-danger'
