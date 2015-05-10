@@ -53,8 +53,8 @@ en:
       start_on: Start date
       end_on: End date
       volume: Volume
-      price_receive: Price (receive)
-      price_polish: Price (polish)
+      sum_receive: Sum (receive)
+      sum_polish: Sum (polish)
       hourly_rate: Hourly rate
       daily_rate: Daily rate
       project_rate: Project rate
@@ -158,8 +158,8 @@ en:
     no_start_date: start date not specified
     no_end_date: start date not specified
     no_volume: volume not specified
-    no_price_receive: price (receive) not specified
-    no_price_polish: price (polish) not specified
+    no_sum_receive: sum (receive) not specified
+    no_sum_polish: sum (polish) not specified
     workers_receive_not_eql: "number of workers for and entries for receiving don't match"
     workers_polish_not_eql: "number of workers for and entries for polishing don't match"
     start_date_in_future: start date is in future

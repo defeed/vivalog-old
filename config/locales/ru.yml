@@ -64,8 +64,8 @@ ru:
       start_on: Дата начала
       end_on: Дата окончания
       volume: Объём
-      price_receive: Цена (приёмка)
-      price_polish: Цена (шлифовка)
+      sum_receive: Сумма за приёмку
+      sum_polish: Сумма за шлифовку
       hourly_rate: Часовая ставка
       daily_rate: Дневная ставка
       project_rate: Проектная ставка
@@ -175,8 +175,8 @@ ru:
     no_start_date: дата начала не указана
     no_end_date: дата окончания не указана
     no_volume: объём не указан
-    no_price_receive: сумма за приёмку не указана
-    no_price_polish: сумма за шлифовку не указана
+    no_sum_receive: сумма за приёмку не указана
+    no_sum_polish: сумма за шлифовку не указана
     workers_receive_not_eql: количество рабочих из записей на приёмке не совпадает
     workers_polish_not_eql: количество рабочих и записей на шлифовке не совпатает
     start_date_in_future: дата начала проекта указана в будущем

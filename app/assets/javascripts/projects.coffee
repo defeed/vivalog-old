@@ -5,24 +5,17 @@ $ ->
     else
       $('#project-billing-types').hide()
 
-  togglePriceReceive = (show) ->
-    toggleRequiredFoo($('#project_price_receive'), show)
+  toggleSumPolish = (show) ->
     if show
-      $('.project_price_receive').show()
+      $('.project_sum_polish').show()
     else
-      $('.project_price_receive').hide()
+      $('.project_sum_polish').hide()
 
-  togglePricePolish = (show) ->
+  toggleSumReceive = (show) ->
     if show
-      $('.project_price_polish').show()
+      $('.project_sum_receive').show()
     else
-      $('.project_price_polish').hide()
-
-  togglePriceReceive = (show) ->
-    if show
-      $('.project_price_receive').show()
-    else
-      $('.project_price_receive').hide()
+      $('.project_sum_receive').hide()
 
   toggleHourlyRate = (show) ->
     if show
@@ -46,13 +39,13 @@ $ ->
     element.prop('required', required)
 
   show_billing_types = $('#project_work_types_other').is(':checked')
-  show_price_receive = $('#project_work_types_receive').is(':checked')
-  show_price_polish = $('#project_work_types_polish').is(':checked')
+  show_sum_receive = $('#project_work_types_receive').is(':checked')
+  show_sum_polish = $('#project_work_types_polish').is(':checked')
   show_hourly_rate = $('#project_billing_types_hourly_rate').is(':checked')
   show_daily_rate = $('#project_billing_types_daily_rate').is(':checked')
   show_project_rate = $('#project_billing_types_project_rate').is(':checked')
-  togglePriceReceive(show_price_receive)
-  togglePricePolish(show_price_polish)
+  toggleSumReceive(show_sum_receive)
+  toggleSumPolish(show_sum_polish)
   toggleBillingTypes(show_billing_types)
   toggleHourlyRate(show_hourly_rate)
   toggleDailyRate(show_daily_rate)
@@ -60,13 +53,13 @@ $ ->
 
   $('#project-work-types').change ->
     show_billing_types = $('#project_work_types_other').is(':checked')
-    show_price_receive = $('#project_work_types_receive').is(':checked')
-    show_price_polish = $('#project_work_types_polish').is(':checked')
-    togglePriceReceive(show_price_receive)
-    togglePricePolish(show_price_polish)
+    show_sum_receive = $('#project_work_types_receive').is(':checked')
+    show_sum_polish = $('#project_work_types_polish').is(':checked')
+    toggleSumReceive(show_sum_receive)
+    toggleSumPolish(show_sum_polish)
     toggleBillingTypes(show_billing_types)
-    toggleRequired($('#project_price_receive'), show_price_receive)
-    toggleRequired($('#project_price_polish'), show_price_polish)
+    toggleRequired($('#project_sum_receive'), show_sum_receive)
+    toggleRequired($('#project_sum_polish'), show_sum_polish)
 
   $('#project-billing-types').change ->
     show_hourly_rate = $('#project_billing_types_hourly_rate').is(':checked')

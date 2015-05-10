@@ -29,8 +29,8 @@ namespace :sample do
       Project.create!(
         title: Faker::Address.street_address,
         volume: (rand * 10000).to_i,
-        price_receive: (rand * 100).to_i,
-        price_polish: (rand * 100).to_i,
+        sum_receive: (rand * 100).to_i,
+        sum_polish: (rand * 100).to_i,
         hourly_rate: (rand * 100).to_i,
         date: Faker::Date.between(3.months.ago, Date.today)
       )

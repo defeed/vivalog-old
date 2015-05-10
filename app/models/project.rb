@@ -42,8 +42,8 @@ class Project < ActiveRecord::Base
     reasons.push :no_start_date if start_on.blank?
     reasons.push :no_end_date if end_on.blank?
     reasons.push :no_volume if volume.blank?
-    reasons.push :no_price_receive if price_receive.blank?
-    reasons.push :no_price_polish if price_polish.blank?
+    reasons.push :no_sum_receive if sum_receive.blank?
+    reasons.push :no_sum_polish if sum_polish.blank?
     reasons.push :workers_receive_not_eql unless begin
       daily_entries = entries.with_type(:receive).count / length.to_f
       daily_entries == avg_workers_for(:receive)

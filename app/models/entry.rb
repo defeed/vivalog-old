@@ -77,7 +77,7 @@ class Entry < ActiveRecord::Base
   def make_payout_for_regular_work
     project_entries = project.entries.where(work_type: work_type)
     base_coeff = project_entries.map(&:coefficient).inject(:+).to_f
-    base_amount = project.send("price_#{work_type}") / base_coeff
+    base_amount = project.send("sum_#{work_type}") / base_coeff
 
     create_payout!(
       project: project,
