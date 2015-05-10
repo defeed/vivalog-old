@@ -7,7 +7,7 @@ ru:
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "Вы уже залигинились"
+      already_authenticated: "Вы уже залогинились"
       inactive: "Ваш аккаунт не активирован"
       invalid: "Неверный %{authentication_keys} или пароль"
       locked: "Ваш аккаунт заблокирован"
