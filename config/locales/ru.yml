@@ -118,7 +118,7 @@ ru:
     sign_out: Выйти
     forgot_password: 'Забыли свой пароль?'
     password_reset: Новый пароль
-    send_password_reset: 'Послать пароль на е-мейл'
+    send_password_reset: 'Выслать пароль на е-мейл'
     new_password: Новый пароль
     password_confirmation: 'Новый пароль, ещё раз'
     set_new_password: Установить новый пароль
