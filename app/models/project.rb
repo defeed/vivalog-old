@@ -101,7 +101,7 @@ class Project < ActiveRecord::Base
     errors.add(:end_on, 'must end on same day or after start')
   end
 
-  def self.generate_code(title, id)
+  def generate_code
     return if title.blank?
     normalized = title
                   .to_slug
@@ -133,7 +133,8 @@ class Project < ActiveRecord::Base
 
   def assign_code
     return unless title.present?
+    return unless title_changed?
 
-    self.code = Project.generate_code(title, id)
+    self.code = generate_code
   end
 end
