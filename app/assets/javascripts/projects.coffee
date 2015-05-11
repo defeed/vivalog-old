@@ -74,8 +74,6 @@ $ ->
   toggleHourlyRate(show_hourly_rate)
   toggleDailyRate(show_daily_rate)
   toggleProjectRate(show_project_rate)
-  calculatePricesReceive()
-  calculatePricesPolish()
 
   $('#project_volume').keyup ->
     calculatePricesReceive()

@@ -93,17 +93,21 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_sums
+    self.sum_receive = nil
+    self.sum_polish = nil
     return if volume.blank?
     calculate_sum_receive
     calculate_sum_polish
   end
 
   def calculate_sum_receive
+    self.sum_receive = nil
     return if sum_sq_receive.blank?
     self.sum_receive = volume * sum_sq_receive
   end
 
   def calculate_sum_polish
+    self.sum_polish = nil
     return if sum_sq_polish.blank?
     self.sum_polish = volume * sum_sq_polish
   end
