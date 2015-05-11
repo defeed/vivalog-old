@@ -45,6 +45,7 @@
             = form.input :daily_rate, label: t('projects.attributes.daily_rate'), placeholder: '€'
             = form.input :project_rate, label: t('projects.attributes.project_rate'), placeholder: '€'
     .row
+      %hr
       .col-md-3.form-group
         = button_tag(type: :submit, class: 'btn btn-block btn-primary') do
           = fa_icon('save', text: t('forms.save'))
