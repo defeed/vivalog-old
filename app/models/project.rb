@@ -10,7 +10,7 @@ class Project < ActiveRecord::Base
   scope :not_finalized, -> { where(finalized_at: nil) }
   scope :finalized, -> { where.not(finalized_at: nil) }
 
-  before_save :strip_array_attrs, :strip_title, :assign_code
+  before_save :strip_array_attrs, :strip_title, :assign_code, :calculate_sums
 
   def self.search(params = {})
     result = all
@@ -90,6 +90,22 @@ class Project < ActiveRecord::Base
   def length
     return 1 unless end_on
     (start_on..end_on).count
+  end
+
+  def calculate_sums
+    return if volume.blank?
+    calculate_sum_receive
+    calculate_sum_polish
+  end
+
+  def calculate_sum_receive
+    return if sum_sq_receive.blank?
+    self.sum_receive = volume * sum_sq_receive
+  end
+
+  def calculate_sum_polish
+    return if sum_sq_polish.blank?
+    self.sum_polish = volume * sum_sq_polish
   end
 
   def ensure_correct_dates

@@ -71,8 +71,10 @@ ru:
       start_on: Дата начала
       end_on: Дата окончания
       volume: Объём
-      sum_receive: Сумма за приёмку
-      sum_polish: Сумма за шлифовку
+      sum_sq_receive: 'Приёмка €/м²'
+      sum_sq_polish: 'Шлифовка €/м²'
+      sum_receive: Приёмка
+      sum_polish: Шлифовка
       hourly_rate: Часовая ставка
       daily_rate: Дневная ставка
       project_rate: Проектная ставка

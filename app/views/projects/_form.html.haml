@@ -27,8 +27,17 @@
         .row
           .col-xs-12
             = form.input :volume, label: t('projects.attributes.volume'), placeholder: 'm²'
-            = form.input :sum_receive, label: t('projects.attributes.sum_receive'), placeholder: '€'
-            = form.input :sum_polish, label: t('projects.attributes.sum_polish'), placeholder: '€'
+          .col-xs-12
+            .row
+              .col-xs-6
+                = form.input :sum_sq_receive, label: t('projects.attributes.sum_sq_receive'), placeholder: '€'
+              .col-xs-6
+                = form.input :sum_receive, as: :string, label: t('projects.attributes.sum_receive'), disabled: true
+            .row
+              .col-xs-6
+                = form.input :sum_sq_polish, label: t('projects.attributes.sum_sq_polish'), placeholder: '€'
+              .col-xs-6
+                = form.input :sum_polish, as: :string, label: t('projects.attributes.sum_polish'), disabled: true
       .col-md-4.col-sm-6.col-xs-12
         .row
           .col-xs-12
