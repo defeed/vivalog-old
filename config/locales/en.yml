@@ -34,7 +34,7 @@ en:
   hello_username: 'Hello, %{name}'
   two_words_connector: ' and '
   last_word_connector: ', and '
-
+  sqm: 'm²'
 
   projects:
     header: Projects
@@ -76,6 +76,7 @@ en:
       comment: Comment
       num_workers: '# workers'
       coefficient: Coefficient
+      sqm: 'Volume'
       num_hours: '# hours'
       hourly_rate: Hourly rate
 

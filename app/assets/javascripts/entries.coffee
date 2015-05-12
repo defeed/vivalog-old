@@ -15,9 +15,11 @@ $ ->
     if show
       $('#workers').show()
       $('#coefficient').show()
+      $('#sqm').show()
     else
       $('#workers').hide()
       $('#coefficient').hide()
+      $('#sqm').hide()
 
   toggleHourlyRate = (show) ->
     if show
@@ -142,6 +144,7 @@ $ ->
     updateValue($('#entry_project_rate'), '')
     $('#workers').hide()
     $('#coefficient').hide()
+    $('#sqm').hide()
     $('#hourly-rate').hide()
     $('#hours').hide()
     $('#daily-rate').hide()

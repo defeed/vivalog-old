@@ -54,6 +54,7 @@ class EntriesController < ApplicationController
       :billing_type,
       :workers,
       :coefficient,
+      :sqm,
       :worked_on,
       :final_date,
       :multiple_days,

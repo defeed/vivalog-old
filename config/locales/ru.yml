@@ -53,6 +53,7 @@ ru:
   hello_username: 'Здравствуйте, %{name}'
   two_words_connector: ' и '
   last_word_connector: ' и '
+  sqm: 'м²'
 
   projects:
     header: Проекты
@@ -101,6 +102,7 @@ ru:
       comment: Комментарий
       num_workers: '# рабочих'
       coefficient: 'Коэфф.'
+      sqm: 'Объём'
       num_hours: '# часов'
       hourly_rate: Часовая ставка
       daily_rate: Дневная ставка

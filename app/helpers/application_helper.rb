@@ -129,7 +129,7 @@ module ApplicationHelper
     return '-' unless number
     number_to_human(
       number,
-      units: {  unit: 'm²' },
+      units: {  unit: t('sqm') },
       precision: 5,
       delimiter: ' ',
       separator: ','

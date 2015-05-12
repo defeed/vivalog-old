@@ -8,6 +8,7 @@
         %th= t('entries.attributes.work_type')
         %th= t('entries.attributes.num_workers')
         %th= t('entries.attributes.coefficient')
+        %th= t('entries.attributes.sqm')
         %th
     %tbody
       - @project.entries.each do |entry|
@@ -17,4 +18,5 @@
           %td= I18n.t("work_types.#{entry.work_type}")
           %td= entry.workers
           %td= coeff(entry.coefficient)
+          %td= volume(entry.sqm)
           %td= link_to fa_icon('trash-o'), entry_path(entry), method: :delete, data: { confirm: t('forms.are_you_sure') }, class: 'btn btn-xs btn-danger'
